@@ -67,7 +67,9 @@
   <meta property="og:url" content="https://d0pp3lgang3r.github.io/posts/blackcogsmail/">
   <meta property="og:site_name" content="D0pp3lgang3r">
   <meta property="og:title" content="Hackday 2025 - The Cogs of Blackmail">
-  <meta property="og:description" content="A compléter !">
+  <meta property="og:description" content="Here is the challenge : 📥 Download Binary
+Binary Analysis # For this challenge we first analyze the binary, which is a DLL in Dotnet, so we upload it in DNSpy, after further simplification of the code we get something like this :
+using System; using System.Reflection; using System.Security.Cryptography; using System.Threading; // Token: 0x02000002 RID: 2 public class btJuHzNucnTGdQAZwMmMnhZQZkH { public static void RcyBinrittxjWupPNlCeddcAqv() { byte[] array = Convert.FromBase64String(&#34;TVo/AAMAAAAEAAAAPz8A...garbagebase64&#34;); string value = &#34;HtTpS://WinDOws.UpDaTe.ShUnbCKhiT.NeT/d5nZ72&#34;; string value2 = &#34;HtTpS://WinDOws.UpDaTe.ShUnbCKhiT.NeT/2hGbZ3&#34;; byte[] array2 = Convert.FromBase64String(&#34;TVo/AAMAAAAEAAAAPz8A...garbagebase64&#34;); string value3 = &#34;HtTpS://WinDOws.UpDaTe.ShUnbCKhiT.NeT/gTbvs4&#34;; Aes aes = Aes.Create(); byte[] iv = new byte[] { 34, 24, 249, 50, 19, 169, 176, 81, 77, 113, 42, 8, 30, 58, 25, 86 }; try { int num3 = Convert.ToInt32(value2); int num2 = num3; num3 = num2 &#43; 1; bool flag4 = num3 % 3 == 1; if (flag4) { return; } } catch { } aes.Mode = CipherMode.CBC; array2 = Convert.FromBase64String(&#34;TVo/AAMAAAAEAAAAPz8AAD8A...garbage_base64&#34;); ... byte[] key = new byte[] { 75, 51, 238, 229, 103, 150, 200, 137, 20, 150, 126, 246, 211, 224, 45, 68, 167, 240, 234, 250, 75, 59, 126, 168, 4, 37, 252, 4, 146, 4, 102, 102 }; aes.Key = key; aes.IV = iv; ICryptoTransform cryptoTransform = aes.CreateDecryptor(); array2 = new byte[] { 93, 212, 70, 17, 222, 77, 122, 106, ... // A Lot of data decrypted }; Assembly assembly = Assembly.Load(cryptoTransform.TransformFinalBlock(array2, 0, array2.Length)); Type type = assembly.GetType(&#34;TOpeUzKRdlVkUernmEtHHRK&#34;); ... } } All we need to understand from this code is that the binary is actually decrypting content of array2 using an IV and an AES Key using CBC mode. So I’ve wrote the following code to decipher the data in array2 :">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -77,7 +79,9 @@
   
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Hackday 2025 - The Cogs of Blackmail">
-  <meta name="twitter:description" content="A compléter !">
+  <meta name="twitter:description" content="Here is the challenge : 📥 Download Binary
+Binary Analysis # For this challenge we first analyze the binary, which is a DLL in Dotnet, so we upload it in DNSpy, after further simplification of the code we get something like this :
+using System; using System.Reflection; using System.Security.Cryptography; using System.Threading; // Token: 0x02000002 RID: 2 public class btJuHzNucnTGdQAZwMmMnhZQZkH { public static void RcyBinrittxjWupPNlCeddcAqv() { byte[] array = Convert.FromBase64String(&#34;TVo/AAMAAAAEAAAAPz8A...garbagebase64&#34;); string value = &#34;HtTpS://WinDOws.UpDaTe.ShUnbCKhiT.NeT/d5nZ72&#34;; string value2 = &#34;HtTpS://WinDOws.UpDaTe.ShUnbCKhiT.NeT/2hGbZ3&#34;; byte[] array2 = Convert.FromBase64String(&#34;TVo/AAMAAAAEAAAAPz8A...garbagebase64&#34;); string value3 = &#34;HtTpS://WinDOws.UpDaTe.ShUnbCKhiT.NeT/gTbvs4&#34;; Aes aes = Aes.Create(); byte[] iv = new byte[] { 34, 24, 249, 50, 19, 169, 176, 81, 77, 113, 42, 8, 30, 58, 25, 86 }; try { int num3 = Convert.ToInt32(value2); int num2 = num3; num3 = num2 &#43; 1; bool flag4 = num3 % 3 == 1; if (flag4) { return; } } catch { } aes.Mode = CipherMode.CBC; array2 = Convert.FromBase64String(&#34;TVo/AAMAAAAEAAAAPz8AAD8A...garbage_base64&#34;); ... byte[] key = new byte[] { 75, 51, 238, 229, 103, 150, 200, 137, 20, 150, 126, 246, 211, 224, 45, 68, 167, 240, 234, 250, 75, 59, 126, 168, 4, 37, 252, 4, 146, 4, 102, 102 }; aes.Key = key; aes.IV = iv; ICryptoTransform cryptoTransform = aes.CreateDecryptor(); array2 = new byte[] { 93, 212, 70, 17, 222, 77, 122, 106, ... // A Lot of data decrypted }; Assembly assembly = Assembly.Load(cryptoTransform.TransformFinalBlock(array2, 0, array2.Length)); Type type = assembly.GetType(&#34;TOpeUzKRdlVkUernmEtHHRK&#34;); ... } } All we need to understand from this code is that the binary is actually decrypting content of array2 using an IV and an AES Key using CBC mode. So I’ve wrote the following code to decipher the data in array2 :">
 
   
   <script type="application/ld+json">
@@ -88,7 +92,7 @@
     "name": "Hackday 2025 - The Cogs of Blackmail",
     "headline": "Hackday 2025 - The Cogs of Blackmail",
     
-    "abstract": "\u003cp\u003eA compléter !\u003c\/p\u003e",
+    "abstract": "\u003cp\u003eHere is the challenge :\n\u003ca href=\u0022https:\/\/d0pp3lgang3r.github.io\/binaries\/DLLception.dll\u0022 target=\u0022_blank\u0022\u003e📥 Download Binary\u003c\/a\u003e\u003c\/p\u003e\n\n\n\u003ch3 class=\u0022relative group\u0022\u003eBinary Analysis \n    \u003cdiv id=\u0022binary-analysis\u0022 class=\u0022anchor\u0022\u003e\u003c\/div\u003e\n    \n    \u003cspan\n        class=\u0022absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100\u0022\u003e\n        \u003ca class=\u0022group-hover:text-primary-300 dark:group-hover:text-neutral-700\u0022\n            style=\u0022text-decoration-line: none !important;\u0022 href=\u0022#binary-analysis\u0022 aria-label=\u0022Anchor\u0022\u003e#\u003c\/a\u003e\n    \u003c\/span\u003e        \n    \n\u003c\/h3\u003e\n\u003cp\u003eFor this challenge we first analyze the binary, which is a DLL in Dotnet, so we upload it in DNSpy, after further simplification of the code we get something like this :\u003c\/p\u003e\n\u003cdiv class=\u0022highlight\u0022\u003e\u003cpre tabindex=\u00220\u0022 style=\u0022color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;\u0022\u003e\u003ccode class=\u0022language-csharp\u0022 data-lang=\u0022csharp\u0022\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003eusing\u003c\/span\u003e System;\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003eusing\u003c\/span\u003e System.Reflection;\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003eusing\u003c\/span\u003e System.Security.Cryptography;\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003eusing\u003c\/span\u003e System.Threading;\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\u003cspan style=\u0022color:#75715e\u0022\u003e\/\/ Token: 0x02000002 RID: 2\u003c\/span\u003e\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003epublic\u003c\/span\u003e \u003cspan style=\u0022color:#66d9ef\u0022\u003eclass\u003c\/span\u003e \u003cspan style=\u0022color:#a6e22e\u0022\u003ebtJuHzNucnTGdQAZwMmMnhZQZkH\u003c\/span\u003e\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e{\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\u003cspan style=\u0022color:#66d9ef\u0022\u003epublic\u003c\/span\u003e \u003cspan style=\u0022color:#66d9ef\u0022\u003estatic\u003c\/span\u003e \u003cspan style=\u0022color:#66d9ef\u0022\u003evoid\u003c\/span\u003e RcyBinrittxjWupPNlCeddcAqv()\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t{\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\u003cspan style=\u0022color:#66d9ef\u0022\u003ebyte\u003c\/span\u003e[] array = Convert.FromBase64String(\u003cspan style=\u0022color:#e6db74\u0022\u003e\u0026#34;TVo\/AAMAAAAEAAAAPz8A...garbagebase64\u0026#34;\u003c\/span\u003e);\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\u003cspan style=\u0022color:#66d9ef\u0022\u003estring\u003c\/span\u003e \u003cspan style=\u0022color:#66d9ef\u0022\u003evalue\u003c\/span\u003e = \u003cspan style=\u0022color:#e6db74\u0022\u003e\u0026#34;HtTpS:\/\/WinDOws.UpDaTe.ShUnbCKhiT.NeT\/d5nZ72\u0026#34;\u003c\/span\u003e;\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\u003cspan style=\u0022color:#66d9ef\u0022\u003estring\u003c\/span\u003e value2 = \u003cspan style=\u0022color:#e6db74\u0022\u003e\u0026#34;HtTpS:\/\/WinDOws.UpDaTe.ShUnbCKhiT.NeT\/2hGbZ3\u0026#34;\u003c\/span\u003e;\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\u003cspan style=\u0022color:#66d9ef\u0022\u003ebyte\u003c\/span\u003e[] array2 = Convert.FromBase64String(\u003cspan style=\u0022color:#e6db74\u0022\u003e\u0026#34;TVo\/AAMAAAAEAAAAPz8A...garbagebase64\u0026#34;\u003c\/span\u003e);\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\u003cspan style=\u0022color:#66d9ef\u0022\u003estring\u003c\/span\u003e value3 = \u003cspan style=\u0022color:#e6db74\u0022\u003e\u0026#34;HtTpS:\/\/WinDOws.UpDaTe.ShUnbCKhiT.NeT\/gTbvs4\u0026#34;\u003c\/span\u003e;\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\tAes aes = Aes.Create();\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\u003cspan style=\u0022color:#66d9ef\u0022\u003ebyte\u003c\/span\u003e[] iv = \u003cspan style=\u0022color:#66d9ef\u0022\u003enew\u003c\/span\u003e \u003cspan style=\u0022color:#66d9ef\u0022\u003ebyte\u003c\/span\u003e[]\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t{\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e34\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e24\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e249\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e50\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e19\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e169\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e176\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e81\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e77\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e113\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e42\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e8\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e30\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e58\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e25\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e86\u003c\/span\u003e\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t};\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\u003cspan style=\u0022color:#66d9ef\u0022\u003etry\u003c\/span\u003e\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t{\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#66d9ef\u0022\u003eint\u003c\/span\u003e num3 = Convert.ToInt32(value2);\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#66d9ef\u0022\u003eint\u003c\/span\u003e num2 = num3;\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\tnum3 = num2 \u002b \u003cspan style=\u0022color:#ae81ff\u0022\u003e1\u003c\/span\u003e;\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#66d9ef\u0022\u003ebool\u003c\/span\u003e flag4 = num3 % \u003cspan style=\u0022color:#ae81ff\u0022\u003e3\u003c\/span\u003e == \u003cspan style=\u0022color:#ae81ff\u0022\u003e1\u003c\/span\u003e;\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#66d9ef\u0022\u003eif\u003c\/span\u003e (flag4)\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t{\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\t\u003cspan style=\u0022color:#66d9ef\u0022\u003ereturn\u003c\/span\u003e;\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t}\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t}\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\u003cspan style=\u0022color:#66d9ef\u0022\u003ecatch\u003c\/span\u003e\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t{\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t}\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\taes.Mode = CipherMode.CBC;\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\tarray2 = Convert.FromBase64String(\u003cspan style=\u0022color:#e6db74\u0022\u003e\u0026#34;TVo\/AAMAAAAEAAAAPz8AAD8A...garbage_base64\u0026#34;\u003c\/span\u003e);\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t...\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\u003cspan style=\u0022color:#66d9ef\u0022\u003ebyte\u003c\/span\u003e[] key = \u003cspan style=\u0022color:#66d9ef\u0022\u003enew\u003c\/span\u003e \u003cspan style=\u0022color:#66d9ef\u0022\u003ebyte\u003c\/span\u003e[]\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t{\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e75\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e51\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e238\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e229\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e103\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e150\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e200\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e137\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e20\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e150\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e126\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e246\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e211\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e224\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e45\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e68\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e167\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e240\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e234\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e250\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e75\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e59\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e126\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e168\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e4\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e37\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e252\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e4\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e146\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e4\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e102\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e102\u003c\/span\u003e\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t};\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\taes.Key = key;\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\taes.IV = iv;\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\tICryptoTransform cryptoTransform = aes.CreateDecryptor();\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\tarray2 = \u003cspan style=\u0022color:#66d9ef\u0022\u003enew\u003c\/span\u003e \u003cspan style=\u0022color:#66d9ef\u0022\u003ebyte\u003c\/span\u003e[]\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t{\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e93\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e212\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e70\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e17\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e222\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e77\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e122\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t\u003cspan style=\u0022color:#ae81ff\u0022\u003e106\u003c\/span\u003e,\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t\t... \u003cspan style=\u0022color:#75715e\u0022\u003e\/\/ A Lot of data decrypted\u003c\/span\u003e\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t};\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\tAssembly assembly = Assembly.Load(cryptoTransform.TransformFinalBlock(array2, \u003cspan style=\u0022color:#ae81ff\u0022\u003e0\u003c\/span\u003e, array2.Length));\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\tType type = assembly.GetType(\u003cspan style=\u0022color:#e6db74\u0022\u003e\u0026#34;TOpeUzKRdlVkUernmEtHHRK\u0026#34;\u003c\/span\u003e);\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t\t...\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\t}\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e}\n\u003c\/span\u003e\u003c\/span\u003e\u003c\/code\u003e\u003c\/pre\u003e\u003c\/div\u003e\u003cp\u003eAll we need to understand from this code is that the binary is actually decrypting content of array2 using an IV and an AES Key using CBC mode.\nSo I\u0026rsquo;ve wrote the following code to decipher the data in array2 :\u003c\/p\u003e",
     "inLanguage": "en-us",
     "url" : "https:\/\/d0pp3lgang3r.github.io\/posts\/blackcogsmail\/",
     "author" : {
@@ -104,7 +108,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "3"
+    "wordCount": "709"
   }]
   </script>
 
@@ -401,7 +405,7 @@
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2025-01-27T00:00:00&#43;00:00">January 27, 2025</time><span class="px-2 text-primary-500">&middot;</span><span>3 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2025-01-27T00:00:00&#43;00:00">January 27, 2025</time><span class="px-2 text-primary-500">&middot;</span><span>709 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
   
 
   
@@ -462,7 +466,306 @@
 
 
         <div class="article-content max-w-prose mb-20">
-          <p>A compléter !</p>
+          <p>Here is the challenge :
+<a href="https://d0pp3lgang3r.github.io/binaries/DLLception.dll" target="_blank">📥 Download Binary</a></p>
+
+
+<h3 class="relative group">Binary Analysis 
+    <div id="binary-analysis" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#binary-analysis" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>For this challenge we first analyze the binary, which is a DLL in Dotnet, so we upload it in DNSpy, after further simplification of the code we get something like this :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Reflection;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Security.Cryptography;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Threading;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Token: 0x02000002 RID: 2</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">btJuHzNucnTGdQAZwMmMnhZQZkH</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> RcyBinrittxjWupPNlCeddcAqv()
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">byte</span>[] array = Convert.FromBase64String(<span style="color:#e6db74">&#34;TVo/AAMAAAAEAAAAPz8A...garbagebase64&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">string</span> <span style="color:#66d9ef">value</span> = <span style="color:#e6db74">&#34;HtTpS://WinDOws.UpDaTe.ShUnbCKhiT.NeT/d5nZ72&#34;</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">string</span> value2 = <span style="color:#e6db74">&#34;HtTpS://WinDOws.UpDaTe.ShUnbCKhiT.NeT/2hGbZ3&#34;</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">byte</span>[] array2 = Convert.FromBase64String(<span style="color:#e6db74">&#34;TVo/AAMAAAAEAAAAPz8A...garbagebase64&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">string</span> value3 = <span style="color:#e6db74">&#34;HtTpS://WinDOws.UpDaTe.ShUnbCKhiT.NeT/gTbvs4&#34;</span>;
+</span></span><span style="display:flex;"><span>		Aes aes = Aes.Create();
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">byte</span>[] iv = <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span>[]
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">34</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">24</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">249</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">50</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">19</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">169</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">176</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">81</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">77</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">113</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">42</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">8</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">30</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">58</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">25</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">86</span>
+</span></span><span style="display:flex;"><span>		};
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">int</span> num3 = Convert.ToInt32(value2);
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">int</span> num2 = num3;
+</span></span><span style="display:flex;"><span>			num3 = num2 + <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">bool</span> flag4 = num3 % <span style="color:#ae81ff">3</span> == <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (flag4)
+</span></span><span style="display:flex;"><span>			{
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">catch</span>
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		aes.Mode = CipherMode.CBC;
+</span></span><span style="display:flex;"><span>		array2 = Convert.FromBase64String(<span style="color:#e6db74">&#34;TVo/AAMAAAAEAAAAPz8AAD8A...garbage_base64&#34;</span>);
+</span></span><span style="display:flex;"><span>		...
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">byte</span>[] key = <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span>[]
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">75</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">51</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">238</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">229</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">103</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">150</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">200</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">137</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">20</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">150</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">126</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">246</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">211</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">224</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">45</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">68</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">167</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">240</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">234</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">250</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">75</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">59</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">126</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">168</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">4</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">37</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">252</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">4</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">146</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">4</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">102</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">102</span>
+</span></span><span style="display:flex;"><span>		};
+</span></span><span style="display:flex;"><span>		aes.Key = key;
+</span></span><span style="display:flex;"><span>		aes.IV = iv;
+</span></span><span style="display:flex;"><span>		ICryptoTransform cryptoTransform = aes.CreateDecryptor();
+</span></span><span style="display:flex;"><span>		array2 = <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span>[]
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">93</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">212</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">70</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">17</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">222</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">77</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">122</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">106</span>,
+</span></span><span style="display:flex;"><span>			... <span style="color:#75715e">// A Lot of data decrypted</span>
+</span></span><span style="display:flex;"><span>		};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		Assembly assembly = Assembly.Load(cryptoTransform.TransformFinalBlock(array2, <span style="color:#ae81ff">0</span>, array2.Length));
+</span></span><span style="display:flex;"><span>		Type type = assembly.GetType(<span style="color:#e6db74">&#34;TOpeUzKRdlVkUernmEtHHRK&#34;</span>);
+</span></span><span style="display:flex;"><span>		...
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>All we need to understand from this code is that the binary is actually decrypting content of array2 using an IV and an AES Key using CBC mode.
+So I&rsquo;ve wrote the following code to decipher the data in array2 :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Cipher <span style="color:#f92672">import</span> AES
+</span></span><span style="display:flex;"><span>iv <span style="color:#f92672">=</span> bytes<span style="color:#f92672">.</span>fromhex(<span style="color:#e6db74">&#34;2218f93213a9b0514d712a081e3a1956&#34;</span>)
+</span></span><span style="display:flex;"><span>key <span style="color:#f92672">=</span> bytes<span style="color:#f92672">.</span>fromhex(<span style="color:#e6db74">&#34;4b33eee56796c88914967ef6d3e02d44a7f0eafa4b3b7ea80425fc0492046666&#34;</span>)
+</span></span><span style="display:flex;"><span>begin_data <span style="color:#f92672">=</span> bytearray([<span style="color:#ae81ff">93</span>,<span style="color:#ae81ff">212</span>,<span style="color:#ae81ff">70</span>,<span style="color:#ae81ff">17</span>,<span style="color:#ae81ff">222</span>,<span style="color:#ae81ff">77</span>,<span style="color:#ae81ff">122</span>,<span style="color:#ae81ff">106</span>,<span style="color:#ae81ff">134</span>,<span style="color:#ae81ff">126</span>,<span style="color:#ae81ff">32</span>])
+</span></span><span style="display:flex;"><span>cipher <span style="color:#f92672">=</span> AES<span style="color:#f92672">.</span>new(key, AES<span style="color:#f92672">.</span>MODE_CBC, iv)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;DLLception.dll&#34;</span>, <span style="color:#e6db74">&#34;rb&#34;</span>) <span style="color:#66d9ef">as</span> file:
+</span></span><span style="display:flex;"><span>	big_data <span style="color:#f92672">=</span> file<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>array_data_idx <span style="color:#f92672">=</span> big_data<span style="color:#f92672">.</span>index(begin_data)
+</span></span><span style="display:flex;"><span>ciphertext <span style="color:#f92672">=</span> bytearray()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">3185680</span>): <span style="color:#75715e"># size given by dnspy counting the rest elements in array2</span>
+</span></span><span style="display:flex;"><span>	ciphertext<span style="color:#f92672">.</span>append(big_data[array_data_idx<span style="color:#f92672">+</span>i])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plaintext <span style="color:#f92672">=</span> cipher<span style="color:#f92672">.</span>decrypt(ciphertext)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;other.dll&#34;</span>, <span style="color:#e6db74">&#34;wb&#34;</span>) <span style="color:#66d9ef">as</span> other:
+</span></span><span style="display:flex;"><span>	other<span style="color:#f92672">.</span>write(plaintext)
+</span></span></code></pre></div><p>It gave me another DLL doing the same process, than the previous DLL, so I&rsquo;ve understood the DLL was unpacking itself multiple time.</p>
+
+
+<h3 class="relative group">Understanding the algorithm 
+    <div id="understanding-the-algorithm" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#understanding-the-algorithm" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Everytime the DLL changes the IV and the Key change, as you can see in the below screen :
+
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="/images/algorithm_cog.png" alt="algorithm cog" />
+      
+    </figure>
+
+That&rsquo;s why I had to develop a parser of C# code, of course to dump the code from the CMD I&rsquo;ve used ilspycmd ;).</p>
+
+
+<h3 class="relative group">Developping the solver 
+    <div id="developping-the-solver" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#developping-the-solver" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Finally I&rsquo;ve developped with Python the following solver to unpack the binary :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> subprocess
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> re
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Cipher <span style="color:#f92672">import</span> AES
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">151</span>):
+</span></span><span style="display:flex;"><span>	command <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;ilspycmd&#34;</span>, <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;.</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">DLLception</span><span style="color:#e6db74">{</span>x<span style="color:#e6db74">}</span><span style="color:#e6db74">.dll&#34;</span>, <span style="color:#e6db74">&#34;-o&#34;</span>, <span style="color:#e6db74">&#34;.&#34;</span>]
+</span></span><span style="display:flex;"><span>	subprocess<span style="color:#f92672">.</span>run(command, check<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>	print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;[+] Decompilation done for </span><span style="color:#e6db74">{</span>x<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;DLLception</span><span style="color:#e6db74">{</span>x<span style="color:#e6db74">}</span><span style="color:#e6db74">.decompiled.cs&#34;</span>, <span style="color:#e6db74">&#34;r&#34;</span>) <span style="color:#66d9ef">as</span> decompiled:
+</span></span><span style="display:flex;"><span>		decompiled_lines <span style="color:#f92672">=</span> decompiled<span style="color:#f92672">.</span>readlines()
+</span></span><span style="display:flex;"><span>	pattern <span style="color:#f92672">=</span> <span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;key\s*=\s*new\s*byte\[[^\]]*\]\s*\{([^}]*)\}&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	garb1 <span style="color:#f92672">=</span> decompiled_lines<span style="color:#f92672">.</span>index(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t\t</span><span style="color:#e6db74">};</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>	decompiled_lines[garb1] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>	garb2 <span style="color:#f92672">=</span> decompiled_lines<span style="color:#f92672">.</span>index(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t\t</span><span style="color:#e6db74">};</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>	decompiled_lines[garb2] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(decompiled_lines)):
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;iV &#34;</span> <span style="color:#f92672">in</span> decompiled_lines[i]:
+</span></span><span style="display:flex;"><span>			iv_line1 <span style="color:#f92672">=</span> decompiled_lines[i<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>			iv_line2 <span style="color:#f92672">=</span> decompiled_lines[i<span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>			iv_str <span style="color:#f92672">=</span> iv_line1 <span style="color:#f92672">+</span> iv_line2
+</span></span><span style="display:flex;"><span>			iv <span style="color:#f92672">=</span> bytearray([int(i) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> iv_str<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;,&#39;</span>)])
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(decompiled_lines)):
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;key &#34;</span> <span style="color:#f92672">in</span> decompiled_lines[i]:
+</span></span><span style="display:flex;"><span>			key_line1 <span style="color:#f92672">=</span> decompiled_lines[i<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>			key_line2 <span style="color:#f92672">=</span> decompiled_lines[i<span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>			key_line3 <span style="color:#f92672">=</span> decompiled_lines[i<span style="color:#f92672">+</span><span style="color:#ae81ff">4</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>			key_line4 <span style="color:#f92672">=</span> decompiled_lines[i<span style="color:#f92672">+</span><span style="color:#ae81ff">5</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>			key_str <span style="color:#f92672">=</span> key_line1 <span style="color:#f92672">+</span> key_line2 <span style="color:#f92672">+</span> key_line3 <span style="color:#f92672">+</span> key_line4
+</span></span><span style="display:flex;"><span>			key <span style="color:#f92672">=</span> bytearray([int(i) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> key_str<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;,&#39;</span>)])
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>	print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>iv<span style="color:#e6db74">=}</span><span style="color:#e6db74">,</span><span style="color:#e6db74">{</span>key<span style="color:#e6db74">=}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	start_idx <span style="color:#f92672">=</span> <span style="color:#ae81ff">461</span>
+</span></span><span style="display:flex;"><span>	end_idx <span style="color:#f92672">=</span> decompiled_lines<span style="color:#f92672">.</span>index(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t\t</span><span style="color:#e6db74">};</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>	values_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;,&#34;</span><span style="color:#f92672">.</span>join(line<span style="color:#f92672">.</span>strip()<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)<span style="color:#f92672">.</span>rstrip(<span style="color:#e6db74">&#34;,&#34;</span>) <span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> decompiled_lines[start_idx:end_idx])
+</span></span><span style="display:flex;"><span>	ciphertext <span style="color:#f92672">=</span> bytearray([int(v) <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> values_str<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;,&#39;</span>)])
+</span></span><span style="display:flex;"><span>	cipher <span style="color:#f92672">=</span> AES<span style="color:#f92672">.</span>new(key, AES<span style="color:#f92672">.</span>MODE_CBC, iv)
+</span></span><span style="display:flex;"><span>	plaintext <span style="color:#f92672">=</span> cipher<span style="color:#f92672">.</span>decrypt(ciphertext)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;DLLception</span><span style="color:#e6db74">{</span>x<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.dll&#34;</span>, <span style="color:#e6db74">&#34;wb&#34;</span>) <span style="color:#66d9ef">as</span> other:
+</span></span><span style="display:flex;"><span>		other<span style="color:#f92672">.</span>write(plaintext)
+</span></span><span style="display:flex;"><span>	print(<span style="color:#e6db74">&#34;[+] Decipher done !&#34;</span>)
+</span></span><span style="display:flex;"><span>	os<span style="color:#f92672">.</span>remove(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;DLLception</span><span style="color:#e6db74">{</span>x<span style="color:#e6db74">}</span><span style="color:#e6db74">.decompiled.cs&#34;</span>)
+</span></span></code></pre></div><p>And at the iteration 150 I got this code which gives the flag :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Threading;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main()
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">char</span>[] array = <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[]
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;H&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;A&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;C&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;K&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;D&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;A&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;Y&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;{&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;d&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;l&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;l&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;C&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;e&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;p&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;t&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;i&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;o&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;n&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;-&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;b&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;e&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;9&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;7&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;4&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;6&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;f&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;a&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;-&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;d&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;0&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;f&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;7&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;-&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;4&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;7&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;6&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;1&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;-&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;a&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;5&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;b&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;a&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;-&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;0&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;e&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;4&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;6&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;1&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;a&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;1&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;6&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;2&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;8&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;7&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;7&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#39;}&#39;</span>
+</span></span><span style="display:flex;"><span>		};
+</span></span><span style="display:flex;"><span>		Thread.Sleep(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i = <span style="color:#ae81ff">0</span>; i &lt; array.Length; i++)
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">char</span>[] array2 = array;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">int</span> num = i;
+</span></span><span style="display:flex;"><span>			array2[num] ^= array[i];
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		Console.WriteLine(<span style="color:#e6db74">&#34;Hello, World!&#34;</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Flag : <code>HACKDAY{dllCeption-be9746fa-d0f7-4761-a5ba-0e461a162877}</code></p>
 
           
           
