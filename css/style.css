@@ -1,0 +1,20 @@
+.icon-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.icon-container a {
+  text-decoration: none;
+}
+
+.icon-img {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.icon-img:hover {
+  transform: scale(1.1);
+}
