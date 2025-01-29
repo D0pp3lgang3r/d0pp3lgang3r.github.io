@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" class="scroll-smooth" data-default-appearance="light"
+  data-auto-appearance="true"><head>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="en-us" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>DEADFACE 2024 &middot; D0pp3lgang3r</title>
+  <meta name="title" content="DEADFACE 2024 &middot; D0pp3lgang3r" />
+  
+  
+  
+  
+  
+  <link rel="canonical" href="https://d0pp3lgang3r.github.io/posts/deadface/" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.1c9cd0d1ebaf117272b5c4f6bd49878475cb210d5e0da4f061632d779f5bb46851881c187e6e634dba5071c4e3d80e7d5cec1dd80443b2fa68acd358f9eda881.css"
+    integrity="sha512-HJzQ0euvEXJytcT2vUmHhHXLIQ1eDaTwYWMtd59btGhRiBwYfm5jTbpQccTj2A59XOwd2ARDsvporNNY&#43;e2ogQ==" />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.c178288131a2f1ad46910438db47ac5f7e1c48cf949e49f6dc3310c8ec9660e23fe505805eba4e2e73711335808500360d773a2b64322feb35df52856edca286.js"
+    integrity="sha512-wXgogTGi8a1GkQQ420esX34cSM&#43;Unkn23DMQyOyWYOI/5QWAXrpOLnNxEzWAhQA2DXc6K2QyL&#43;s131KFbtyihg==" data-copy="" data-copied=""></script>
+  
+  
+  
+  <script src="/lib/zoom/zoom.min.37d2094687372da3f7343a221a470f6b8806f7891aa46a5a03966af7f0ebd38b9fe536cb154e6ad28f006d184b294525a7c4054b6bbb4be62d8b453b42db99bd.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S&#43;Yti0U7QtuZvQ=="></script>
+  
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:url" content="https://d0pp3lgang3r.github.io/posts/deadface/">
+  <meta property="og:site_name" content="D0pp3lgang3r">
+  <meta property="og:title" content="DEADFACE 2024">
+  <meta property="og:description" content="Intro # This is my writeups for some deadface challenges I’ve done as the captain of PsychoBash, we got first place on this CTF :).
+Reverse Engineering # CEREAL 01 # It was just an ltrace of the binary and we get the password to get the flag : chmod &#43;x ck-2024-re04; echo &#34;doppel&#34; | ltrace ./ck-2024-re04
+now we can get the password : booberry and enter it to get the flag : flag{The-M0st-Fam0us-Nephew-Loves-B00B3rry!}">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-01-20T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-01-20T00:00:00+00:00">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="DEADFACE 2024">
+  <meta name="twitter:description" content="Intro # This is my writeups for some deadface challenges I’ve done as the captain of PsychoBash, we got first place on this CTF :).
+Reverse Engineering # CEREAL 01 # It was just an ltrace of the binary and we get the password to get the flag : chmod &#43;x ck-2024-re04; echo &#34;doppel&#34; | ltrace ./ck-2024-re04
+now we can get the password : booberry and enter it to get the flag : flag{The-M0st-Fam0us-Nephew-Loves-B00B3rry!}">
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "DEADFACE 2024",
+    "headline": "DEADFACE 2024",
+    
+    "abstract": "\u003ch2 class=\u0022relative group\u0022\u003eIntro \n    \u003cdiv id=\u0022intro\u0022 class=\u0022anchor\u0022\u003e\u003c\/div\u003e\n    \n    \u003cspan\n        class=\u0022absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100\u0022\u003e\n        \u003ca class=\u0022group-hover:text-primary-300 dark:group-hover:text-neutral-700\u0022\n            style=\u0022text-decoration-line: none !important;\u0022 href=\u0022#intro\u0022 aria-label=\u0022Anchor\u0022\u003e#\u003c\/a\u003e\n    \u003c\/span\u003e        \n    \n\u003c\/h2\u003e\n\u003cp\u003eThis is my writeups for some deadface challenges I\u0026rsquo;ve done as the captain of \u003ca href=\u0022https:\/\/ctftime.org\/team\/358981\u0022 target=\u0022_blank\u0022\u003ePsychoBash\u003c\/a\u003e, we got first place on this CTF :).\u003c\/p\u003e\n\n\n\u003ch2 class=\u0022relative group\u0022\u003eReverse Engineering \n    \u003cdiv id=\u0022reverse-engineering\u0022 class=\u0022anchor\u0022\u003e\u003c\/div\u003e\n    \n    \u003cspan\n        class=\u0022absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100\u0022\u003e\n        \u003ca class=\u0022group-hover:text-primary-300 dark:group-hover:text-neutral-700\u0022\n            style=\u0022text-decoration-line: none !important;\u0022 href=\u0022#reverse-engineering\u0022 aria-label=\u0022Anchor\u0022\u003e#\u003c\/a\u003e\n    \u003c\/span\u003e        \n    \n\u003c\/h2\u003e\n\n\n\u003ch3 class=\u0022relative group\u0022\u003eCEREAL 01 \n    \u003cdiv id=\u0022cereal-01\u0022 class=\u0022anchor\u0022\u003e\u003c\/div\u003e\n    \n    \u003cspan\n        class=\u0022absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100\u0022\u003e\n        \u003ca class=\u0022group-hover:text-primary-300 dark:group-hover:text-neutral-700\u0022\n            style=\u0022text-decoration-line: none !important;\u0022 href=\u0022#cereal-01\u0022 aria-label=\u0022Anchor\u0022\u003e#\u003c\/a\u003e\n    \u003c\/span\u003e        \n    \n\u003c\/h3\u003e\n\u003cp\u003eIt was just an ltrace of the binary and we get the password to get the flag : \u003ccode\u003echmod \u002bx ck-2024-re04; echo \u0026quot;doppel\u0026quot; | ltrace .\/ck-2024-re04\u003c\/code\u003e\u003cbr\u003e\nnow we can get the password : \u003ccode\u003ebooberry\u003c\/code\u003e and enter it to get the flag : \u003ccode\u003eflag{The-M0st-Fam0us-Nephew-Loves-B00B3rry!}\u003c\/code\u003e\u003cbr\u003e\u003c\/p\u003e",
+    "inLanguage": "en-us",
+    "url" : "https:\/\/d0pp3lgang3r.github.io\/posts\/deadface\/",
+    "author" : {
+      "@type": "Person",
+      "name": ""
+    },
+    "copyrightYear": "2024",
+    "dateCreated": "2024-01-20T00:00:00\u002b00:00",
+    "datePublished": "2024-01-20T00:00:00\u002b00:00",
+    
+    "dateModified": "2024-01-20T00:00:00\u002b00:00",
+    
+    
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "1731"
+  }]
+  </script>
+
+
+  
+  
+  
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  <meta name="theme-color"/>
+  
+  
+</head>
+<body
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32 scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+  <div id="the-top" class="absolute flex self-center">
+    <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+      href="#main-content"><span
+        class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Skip to main content</a>
+  </div>
+  
+  
+  <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+    class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start gap-x-3">
+    
+    <div class="flex flex-1 items-center justify-between">
+        <nav class="flex space-x-3">
+
+            
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">D0pp3lgang3r</a>
+            
+
+        </nav>
+        <nav class="hidden md:flex items-center gap-x-5 md:ml-12 h-12">
+
+            
+            
+            
+  <a href="/posts/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="">
+        Posts
+    </p>
+</a>
+
+
+
+            
+            
+
+            
+
+
+            
+            <button id="search-button" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+
+            
+            
+            <div
+                class=" flex items-center">
+                <button id="appearance-switcher" aria-label="Dark mode switcher" type="button" class="text-base hover:text-primary-600 dark:hover:text-primary-400">
+                    <div class="flex items-center justify-center dark:hidden">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                    </div>
+                    <div class="items-center justify-center hidden dark:flex">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                    </div>
+                </button>
+            </div>
+            
+
+        </nav>
+        <div class="flex md:hidden items-center gap-x-5 md:ml-12 h-12">
+
+            <span></span>
+
+            
+
+
+            
+            <button id="search-button-mobile" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+            
+            
+            <button id="appearance-switcher-mobile" aria-label="Dark mode switcher" type="button" class="text-base hover:text-primary-600 dark:hover:text-primary-400 ltr:mr-1 rtl:ml-1">
+                <div class="flex items-center justify-center dark:hidden">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                </div>
+                <div class="items-center justify-center hidden dark:flex">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                </div>
+            </button>
+            
+
+        </div>
+    </div>
+    <div class="-my-2 md:hidden">
+
+        <label id="menu-button" class="block">
+            
+            <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
+
+
+            </div>
+            <div id="menu-wrapper" style="padding-top:5px;"
+                class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+                <ul
+                    class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+                    <li id="menu-close-button">
+                        <span
+                            class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+                    </li>
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/posts/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="">
+            Posts
+        </p>
+    </a>
+</li>
+
+
+
+
+                    
+
+                </ul>
+                
+                
+
+            </div>
+        </label>
+    </div>
+</div>
+
+
+
+
+
+  
+  <div class="relative flex flex-col grow">
+    <main id="main-content" class="grow">
+      
+
+
+<article>
+  
+
+  <header id="single_header" class="mt-5 max-w-prose">
+    
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      DEADFACE 2024
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2024-01-20T00:00:00&#43;00:00">January 20, 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1731 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">9 mins</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+    
+    
+
+    
+
+    
+      
+      
+        
+        
+<div class="flex author">
+  
+  <div class="place-self-center">
+    
+    
+    <div class="text-2xl sm:text-lg">
+</div>
+  </div>
+</div>
+
+      
+
+      
+
+      
+      <div class="mb-5"></div>
+      
+
+    
+
+  </header>
+  
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    
+    
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+        
+
+
+        <div class="article-content max-w-prose mb-20">
+          
+
+<h2 class="relative group">Intro 
+    <div id="intro" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#intro" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>This is my writeups for some deadface challenges I&rsquo;ve done as the captain of <a href="https://ctftime.org/team/358981" target="_blank">PsychoBash</a>, we got first place on this CTF :).</p>
+
+
+<h2 class="relative group">Reverse Engineering 
+    <div id="reverse-engineering" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#reverse-engineering" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+
+
+<h3 class="relative group">CEREAL 01 
+    <div id="cereal-01" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#cereal-01" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>It was just an ltrace of the binary and we get the password to get the flag : <code>chmod +x ck-2024-re04; echo &quot;doppel&quot; | ltrace ./ck-2024-re04</code><br>
+now we can get the password : <code>booberry</code> and enter it to get the flag : <code>flag{The-M0st-Fam0us-Nephew-Loves-B00B3rry!}</code><br></p>
+
+
+<h3 class="relative group">CEREAL 02 
+    <div id="cereal-02" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#cereal-02" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>For this one I didn&rsquo;t find the password after anlyzing binary we can see some data is in variable v8, v6, s2 : <br>
+<img src="/images/image_2024-10-20_125027585.png" ><br>
+We notice in the password checker that a function is called, and pass v8 data and v6 hash of yellowschoolbus.<br>
+<img src="/images/image_2024-10-20_125200128.png"><br>
+This function is RC4 : <br>
+<img src="/images/image_2024-10-20_125112993.png"><br>
+After converting v8 data to big endian we can decipher using cyberchef and grab the flag : <br>
+<img src="/images/image_2024-10-20_124853110.png"/> <code>flag{Mdm-Harris-Eats-FrankenB3rry-On-Yell0w-SchQQl-Busses!}</code></p>
+
+
+<h3 class="relative group">CEREALKILLER 05 
+    <div id="cerealkiller-05" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#cerealkiller-05" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>I reversed the compiled java aplication using jadx :
+<img src="/images/image_2024-10-20_130142158.png">
+we can simply do a KPA with XOR on the link knowing first 5 bytes are <code>https</code> to get the key <code>Br00t</code> and grab all image link, we then compute hash of the image and we can decipher flag which has been ciphered by AES-GCM. see my solve script below :<br></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hashlib
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> base64
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Cipher <span style="color:#f92672">import</span> AES
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Util.Padding <span style="color:#f92672">import</span> unpad
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pathlib <span style="color:#f92672">import</span> Path
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decrypt_flag_with_aes_gcm</span>(key, nonce_base64, ciphertext_base64):
+</span></span><span style="display:flex;"><span>    nonce <span style="color:#f92672">=</span> base64<span style="color:#f92672">.</span>b64decode(nonce_base64)
+</span></span><span style="display:flex;"><span>    ciphertext <span style="color:#f92672">=</span> base64<span style="color:#f92672">.</span>b64decode(ciphertext_base64)
+</span></span><span style="display:flex;"><span>    cipher <span style="color:#f92672">=</span> AES<span style="color:#f92672">.</span>new(key, AES<span style="color:#f92672">.</span>MODE_GCM, nonce<span style="color:#f92672">=</span>nonce)
+</span></span><span style="display:flex;"><span>    plaintext <span style="color:#f92672">=</span> cipher<span style="color:#f92672">.</span>decrypt(ciphertext)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> plaintext
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>encrypted <span style="color:#f92672">=</span> [<span style="color:#ae81ff">42</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">68</span>, <span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">120</span>, <span style="color:#ae81ff">93</span>, <span style="color:#ae81ff">31</span>, <span style="color:#ae81ff">83</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">48</span>, <span style="color:#ae81ff">23</span>, <span style="color:#ae81ff">81</span>, <span style="color:#ae81ff">92</span>, <span style="color:#ae81ff">90</span>, <span style="color:#ae81ff">46</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">68</span>, <span style="color:#ae81ff">68</span>, <span style="color:#ae81ff">27</span>, <span style="color:#ae81ff">44</span>, <span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">81</span>, <span style="color:#ae81ff">82</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">108</span>, <span style="color:#ae81ff">29</span>, <span style="color:#ae81ff">66</span>, <span style="color:#ae81ff">87</span>, <span style="color:#ae81ff">91</span>, <span style="color:#ae81ff">33</span>, <span style="color:#ae81ff">23</span>, <span style="color:#ae81ff">66</span>, <span style="color:#ae81ff">85</span>, <span style="color:#ae81ff">21</span>, <span style="color:#ae81ff">46</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">31</span>, <span style="color:#ae81ff">86</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">45</span>, <span style="color:#ae81ff">29</span>, <span style="color:#ae81ff">68</span>, <span style="color:#ae81ff">82</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">45</span>, <span style="color:#ae81ff">29</span>, <span style="color:#ae81ff">68</span>, <span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">23</span>, <span style="color:#ae81ff">87</span>]
+</span></span><span style="display:flex;"><span>encrypted_bytes <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> e <span style="color:#f92672">in</span> encrypted:
+</span></span><span style="display:flex;"><span>    encrypted_bytes<span style="color:#f92672">+=</span>e<span style="color:#f92672">.</span>to_bytes()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>image_link <span style="color:#f92672">=</span> xor(encrypted_bytes, <span style="color:#e6db74">&#34;Br00t&#34;</span>) <span style="color:#75715e"># l&#39;image se récup avec https</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;frootbroot.jpeg&#34;</span>, <span style="color:#e6db74">&#34;rb&#34;</span>) <span style="color:#66d9ef">as</span> file:
+</span></span><span style="display:flex;"><span>    data <span style="color:#f92672">=</span> file<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>key <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>sha256(data)<span style="color:#f92672">.</span>digest()
+</span></span><span style="display:flex;"><span>ivbase64 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;qHttv1t5TWZLDM4e&#34;</span>
+</span></span><span style="display:flex;"><span>ciphertext_base64 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tj/BJ+45Z45uRCFpuFOHirQI34ZC7bmtpCtJ3OE613fIxqrsZwIoLNSBXSjtPONFqZF3gC+4glh1Gyi2RBKZcuItH8s=&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(decrypt_flag_with_aes_gcm(key, ivbase64, ciphertext_base64)) <span style="color:#75715e"># flag{Fr00t-Br00t-is-the-only-cereal-for-Prez-Trump!}</span>
+</span></span></code></pre></div>
+
+<h2 class="relative group">Cryptography 
+    <div id="cryptography" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#cryptography" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+
+
+<h3 class="relative group">Social Pressure 
+    <div id="social-pressure" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#social-pressure" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Just use atbash cipher from <a href="https://www.dcode.fr/chiffre-atbash" target="_blank">dcode</a>, which allows us to decipher the conversation :</p>
+<pre tabindex="0"><code>luciafer 
+
+Hey lilith, big news! We&#39;re going after De Monne Financial next. Their security measures have some holes that we&#39;re gonna exploit big time! I&#39;ve been poking around and found some SQL vulnerabilities we can leverage for maximum chaos.
+
+Remember that IT guy I mentioned before? Turns out, he’s a real chatty Cathy on social media. Think we can use some good ol&#39; social engineering to our advantage. We’ll get him spewing passwords like a leaky faucet. Plus, with your OSINT skills and my SQL magic, they won’t see what hit &#39;em.
+
+lilith
+
+I&#39;ve already started some OSINT recon and guess what? Found some juicy deets about their IT team on LinkedIn. People overshare so much, it&#39;s practically a goldmine. Social engineering that chatty dude should be a breeze; I&#39;ll craft a legend that&#39;ll have him spilling everything.
+
+luciafer
+
+Yaaas, this is gonna be legendary! Loving the enthusiasm. And Elroy Ongaro? That guy&#39;s practically rolling out the red carpet for us with how much he shares online. Can&#39;t believe how easy some of these targets make it.
+
+lilith
+
+Absolutely! Elroy Ongaro has no idea what&#39;s coming his way. I&#39;ve already got a few angles in mind to get him talking. Social engineering these types is always a thrill.
+
+I&#39;ll start drafting some personas and scripts. Once he&#39;s under our influence, we can orchestrate the SQL exploit seamlessly. Your expertise in that area is going to be crucial.
+
+# flag{Elroy_Ongaro}
+</code></pre>
+
+<h3 class="relative group">Discreet Logging 
+    <div id="discreet-logging" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#discreet-logging" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>In this challenge we have access to some kind of logs of computation :</p>
+<pre tabindex="0"><code>computing discrete log for prime: 191
+discrete log found: 25
+computing discrete log for prime: 1621
+discrete log found: 293
+computing discrete log for prime: 61
+discrete log found: 49
+computing discrete log for prime: 2447
+discrete log found: 2105
+...
+</code></pre><p>At first I thought it was logging about DLP (Discrete Logarithm Problem) where we have to solve equation $<code>g^x = h \ (mod \ p)</code>$ knowing $<code>(x, p)</code>$ and I thought flag char was the $<code>h</code>$ value, but actually it was just CRT (Chinese Remainder Theorem) which allow us to solve congruence system see details <a href="https://en.wikipedia.org/wiki/Chinese_remainder_theorem" target="_blank">here</a>.
+So first I&rsquo;ve written this script to parse data from the web page logs :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/challenges/crypto/crypto13/ecdh_crack_20241013.log&#34;</span>
+</span></span><span style="display:flex;"><span>PRIMES <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>LOGS <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>resp <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url)
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> resp<span style="color:#f92672">.</span>text
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> data<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;computing&#39;</span> <span style="color:#f92672">in</span> line:
+</span></span><span style="display:flex;"><span>        PRIMES<span style="color:#f92672">.</span>append(int(line<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;computing discrete log for prime: &#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>)))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        LOGS<span style="color:#f92672">.</span>append(int(line<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;discrete log found: &#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>)))
+</span></span><span style="display:flex;"><span>print(PRIMES)
+</span></span><span style="display:flex;"><span>print(LOGS)
+</span></span></code></pre></div><p>Finally in sage we can do this :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Util.number <span style="color:#f92672">import</span> long_to_bytes
+</span></span><span style="display:flex;"><span>nis <span style="color:#f92672">=</span> [<span style="color:#ae81ff">191</span>, <span style="color:#ae81ff">1621</span>, <span style="color:#ae81ff">61</span>, <span style="color:#ae81ff">2447</span>, <span style="color:#ae81ff">991</span>, <span style="color:#ae81ff">1297</span>, <span style="color:#ae81ff">47</span>, <span style="color:#ae81ff">1049</span>, <span style="color:#ae81ff">347</span>, <span style="color:#ae81ff">283</span>, <span style="color:#ae81ff">2617</span>, <span style="color:#ae81ff">1429</span>, <span style="color:#ae81ff">167</span>, <span style="color:#ae81ff">307</span>, <span style="color:#ae81ff">431</span>, <span style="color:#ae81ff">683</span>, <span style="color:#ae81ff">1627</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">827</span>, <span style="color:#ae81ff">97</span>, <span style="color:#ae81ff">523</span>, <span style="color:#ae81ff">151</span>, <span style="color:#ae81ff">37</span>, <span style="color:#ae81ff">2269</span>, <span style="color:#ae81ff">1733</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">19</span>, <span style="color:#ae81ff">439</span>]
+</span></span><span style="display:flex;"><span>cis <span style="color:#f92672">=</span> [<span style="color:#ae81ff">25</span>, <span style="color:#ae81ff">293</span>, <span style="color:#ae81ff">49</span>, <span style="color:#ae81ff">2105</span>, <span style="color:#ae81ff">564</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">13</span>, <span style="color:#ae81ff">21</span>, <span style="color:#ae81ff">229</span>, <span style="color:#ae81ff">257</span>, <span style="color:#ae81ff">307</span>, <span style="color:#ae81ff">511</span>, <span style="color:#ae81ff">124</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">63</span>, <span style="color:#ae81ff">476</span>, <span style="color:#ae81ff">1054</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">793</span>, <span style="color:#ae81ff">60</span>, <span style="color:#ae81ff">270</span>, <span style="color:#ae81ff">145</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">796</span>, <span style="color:#ae81ff">1041</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">60</span>]
+</span></span><span style="display:flex;"><span>print(long_to_bytes(crt(cis, nis)) <span style="color:#75715e"># flag{ch1n3s3-r3mAind3r-D-l0g}</span>
+</span></span></code></pre></div>
+
+<h3 class="relative group">Drink Up 
+    <div id="drink-up" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#drink-up" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Challenge provide this image : <br>
+<img src="/images/callingcard.png" /><br>
+We also have the ciphertext written on the image : <code>zxk1ehfZ/kx7tzSyQeSm2XuGitnxsN8rG/mwxNaCjFFc2rCrTTWpwViZFpwI4xRccvdwm/Ta6l3GFeaPs96l7BPziIu+DsfoS6bdy5ByHSyW+D5bCgtTCuoVvMOlPC7xILtjlt6/Ky6ZPaV40gfmtM/iuRGR+zveFLNyWy9Tlu3TnOaq0lP6wp65lGEFBTHPSwho0jIP47pxoKryxnh7svJrTD1wh+D+YudNjDpPr39yH/iMlU+5xiK2dXjiD0UtL3vSSQ55MLCPpN/kFW6AuO2OEuadKXg2XYiXnAkLJcUxGdZhP7+Lo4LG3m5HsHdBmul5pX9gcvERFQSZOy2QfEv3+vRfLfoJPq6WQnBjwXUoVo/YHeD8SS+TDvg=</code><br>
+The word &ldquo;XXTEA&rdquo; written on the image refers to the cipher that has been used, also I&rsquo;ve tried different posssibilities of key like &ldquo;only2ingredients&hellip;&quot;<br>
+And I&rsquo;ve finally found the key just by using words in the image, here is the solution script to decipher xxtea using python : <br></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># pip install xxtea-py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> base64
+</span></span><span style="display:flex;"><span>cipher_text_base64 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zxk1ehfZ/kx7tzSyQeSm2XuGitnxsN8rG/mwxNaCjFFc2rCrTTWpwViZFpwI4xRccvdwm/Ta6l3GFeaPs96l7BPziIu+DsfoS6bdy5ByHSyW+D5bCgtTCuoVvMOlPC7xILtjlt6/Ky6ZPaV40gfmtM/iuRGR+zveFLNyWy9Tlu3TnOaq0lP6wp65lGEFBTHPSwho0jIP47pxoKryxnh7svJrTD1wh+D+YudNjDpPr39yH/iMlU+5xiK2dXjiD0UtL3vSSQ55MLCPpN/kFW6AuO2OEuadKXg2XYiXnAkLJcUxGdZhP7+Lo4LG3m5HsHdBmul5pX9gcvERFQSZOy2QfEv3+vRfLfoJPq6WQnBjwXUoVo/YHeD8SS+TDvg=&#34;</span>
+</span></span><span style="display:flex;"><span>cipher_text <span style="color:#f92672">=</span> base64<span style="color:#f92672">.</span>b64decode(cipher_text_base64)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>key <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;Tea Turned Up to the Max&#34;</span>
+</span></span><span style="display:flex;"><span>plain_text <span style="color:#f92672">=</span> xxtea<span style="color:#f92672">.</span>decrypt(cipher_text, key)
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;Ah, I see you&#39;ve stumbled upon my little souvenir. By now, you must be feeling pretty exposed. It&#39;s a shame companies like yours invest in everything but proper security. Remember, this isn&#39;t personal; it&#39;s just your turn. Sleep tight, spookyboi was here. flag{br3wed_4_the_B0ld!}&#34;</span>
+</span></span></code></pre></div>
+
+<h3 class="relative group">Killer Curve 
+    <div id="killer-curve" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#killer-curve" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>This one was definitely hardest crypto challenge of the competition we have a binary which allows us to connect to a server by sending a public key, server will use it to compute shared key and send us back this shared key to cipher any file we want.<br>
+Reversing this binary was kind of hard, but I&rsquo;ve noticed some interesting stuff in it, concidering the format of the key which is given by this line : <code>v91.str = (uint8 *)&quot;Public key in hex format (x:y)&quot;;</code><br>
+Also the type of curve being used : <br>
+<img src="/images/image_2024-10-20_111553782.png" /><br>
+Here is an example of usage of the binary :<br>
+<img src="/images/image_2024-10-20_110928801.png" />
+We notice that the type of curve printed by the binary wasn&rsquo;t the same than the one we saw in the code, so i&rsquo;ve took the elliptic curve parameters of the one in code. <br>
+Before entering in the crypto attack we&rsquo;re going to implement, let&rsquo;s review definition of an Elliptic Curve over a finite field $<code>\mathbb{F}_p</code>$ which is defined by the following equation : $<code>E : Y^2 = X^3 + aX + b \ (mod \ p)</code>$ with $<code>a, b, p</code>$ parameters of the curve, and $<code>(X, Y)</code>$ coordinates of points on the curve, we can add points together and multiply those points, it also exists point at infinity written $<code>O</code>$
+Point addition on $<code>E(\mathbb{F}_p)</code>$ is a bit particular see this theorem :
+<img src="/images/image_2024-10-20_113514080.png" /><br>
+As we can add points together we can also multiply points by a scalar $<code>l</code>$, for example if i take a random point $<code>P</code>$ on my elliptic curve and compute $<code>lP = Q</code>$ it will give me another point on the curve see double and add algorithm.<br>
+And this is exactly the problem we are facing on this challenge, it is about solving ECDHKE (Elliptic Curve Diffie Hellman Key Exchange) to find the scalar $<code>l</code>$ which is the private key of the server :).<br>
+On the challenge, when I connect to the server it always gives me the same public key :
+<img src="/images/image_2024-10-20_115731173.png"/>
+The curve which is used by the challenge is this one : <a href="https://neuromancer.sk/std/secg/secp256r1" target="_blank">https://neuromancer.sk/std/secg/secp256r1</a>.<br>
+I&rsquo;ve also noticed that if I send a point which is not suppose to be on that curve, server accept it and compute shared secret anyway see below :
+In my terminal :
+<img src="/images/image_2024-10-20_120403181.png">
+<img src="/images/image_2024-10-20_120501477.png">
+To the remote server :
+<img src="image_2024-10-20_120245575.png">
+Noticing this, we know it&rsquo;s invalid curve attack that can allow us to get the private key of the server, now let&rsquo;s review what&rsquo;s invalid curve attack.<br>
+As the b constant is not used in the scalar multiplication, we need to find curves with same a but diffferent small b which gives us a smooth order for the curve, we will send multiple evil points from different curves everytime and we will get the answer of the server.<br>
+To generate the evil point, we factorise the order of the curve, take a small factor of it and take a point that has this factor as order.<br>
+We then compute discrete log of the answer of the server, and use crt on all those discrete logs to get the private key, care to send enough evil points until order of product of all evil points above the order of the curve :).<br>
+Here is my solve script (adapted from here <a href="https://www.hackthebox.com/blog/business-ctf-2022-400-curves-write-up" target="_blank">https://www.hackthebox.com/blog/business-ctf-2022-400-curves-write-up</a>)<br></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Util.number <span style="color:#f92672">import</span> long_to_bytes
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sage.all_cmdline <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xffffffff00000001000000000000000000000000fffffffffffffffffffffffc</span>
+</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604b</span>
+</span></span><span style="display:flex;"><span>p <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xffffffff00000001000000000000000000000000ffffffffffffffffffffffff</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>K <span style="color:#f92672">=</span> GF(p)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">solveDL</span>(r):
+</span></span><span style="display:flex;"><span>    b <span style="color:#f92672">=</span> randint(<span style="color:#ae81ff">1</span>, p)
+</span></span><span style="display:flex;"><span>    E <span style="color:#f92672">=</span> EllipticCurve(GF(p), [a, b])
+</span></span><span style="display:flex;"><span>    K <span style="color:#f92672">=</span> GF(p)
+</span></span><span style="display:flex;"><span>    order <span style="color:#f92672">=</span> E<span style="color:#f92672">.</span>order()
+</span></span><span style="display:flex;"><span>    factors <span style="color:#f92672">=</span> prime_factors(order)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    valid <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> factor <span style="color:#f92672">in</span> factors:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> factor <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">40</span>:
+</span></span><span style="display:flex;"><span>            valid<span style="color:#f92672">.</span>append(factor)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    prime <span style="color:#f92672">=</span> valid[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    G <span style="color:#f92672">=</span> E<span style="color:#f92672">.</span>gen(<span style="color:#ae81ff">0</span>) <span style="color:#f92672">*</span> int(order <span style="color:#f92672">/</span> prime)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    tmp_point <span style="color:#f92672">=</span> G<span style="color:#f92672">.</span>xy()
+</span></span><span style="display:flex;"><span>    tmp_x, tmp_y <span style="color:#f92672">=</span> str(hex(tmp_point[<span style="color:#ae81ff">0</span>]))[<span style="color:#ae81ff">2</span>:], str(hex(tmp_point[<span style="color:#ae81ff">1</span>]))[<span style="color:#ae81ff">2</span>:]
+</span></span><span style="display:flex;"><span>    tmp_point <span style="color:#f92672">=</span> tmp_x <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;:&#34;</span> <span style="color:#f92672">+</span> tmp_y
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>sendline(tmp_point)
+</span></span><span style="display:flex;"><span>    data <span style="color:#f92672">=</span> int(r<span style="color:#f92672">.</span>recvline()<span style="color:#f92672">.</span>decode())
+</span></span><span style="display:flex;"><span>    print(data)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        Q <span style="color:#f92672">=</span> E<span style="color:#f92672">.</span>lift_x(K(data))
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;Computing the discrete log problem&#34;</span>)
+</span></span><span style="display:flex;"><span>        log <span style="color:#f92672">=</span> G<span style="color:#f92672">.</span>discrete_log(Q)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;DL found: </span><span style="color:#e6db74">{</span>log<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> (log, prime)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>        print(e)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>, <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">getDLs</span>():
+</span></span><span style="display:flex;"><span>    dlogs <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    primes <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    multi <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> multi <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0xffffffff00000000ffffffffffffffffbce6faada7179e84f3b9cac2fc632551</span>:
+</span></span><span style="display:flex;"><span>        r <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#34;killercurve.deadface.io&#34;</span>, <span style="color:#ae81ff">4444</span>)
+</span></span><span style="display:flex;"><span>        print(r<span style="color:#f92672">.</span>recvline())
+</span></span><span style="display:flex;"><span>        log, prime <span style="color:#f92672">=</span> solveDL(r)
+</span></span><span style="display:flex;"><span>        print(log)
+</span></span><span style="display:flex;"><span>        print(prime)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> log <span style="color:#f92672">!=</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            dlogs<span style="color:#f92672">.</span>append(log)
+</span></span><span style="display:flex;"><span>            primes<span style="color:#f92672">.</span>append(prime)
+</span></span><span style="display:flex;"><span>            multi <span style="color:#f92672">*=</span> prime
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;counter: </span><span style="color:#e6db74">{</span>i<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> dlogs, primes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">pwn</span>():
+</span></span><span style="display:flex;"><span>    dlogs, primes <span style="color:#f92672">=</span> getDLs()
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;dlogs: </span><span style="color:#e6db74">{</span>dlogs<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;primes: </span><span style="color:#e6db74">{</span>primes<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    l <span style="color:#f92672">=</span> len(dlogs)
+</span></span><span style="display:flex;"><span>    print(l)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span><span style="color:#f92672">**</span>l):
+</span></span><span style="display:flex;"><span>        signs <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span> <span style="color:#66d9ef">if</span> i <span style="color:#f92672">&amp;</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> j) <span style="color:#66d9ef">else</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(l)]
+</span></span><span style="display:flex;"><span>        secret <span style="color:#f92672">=</span> crt([dlog <span style="color:#f92672">*</span> sign <span style="color:#66d9ef">for</span> dlog, sign <span style="color:#f92672">in</span> zip(dlogs, signs)], primes)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;flag&#39;</span> <span style="color:#f92672">in</span> long_to_bytes(secret):
+</span></span><span style="display:flex;"><span>            print(long_to_bytes(secret)) <span style="color:#75715e"># flag{1nv@l1d-cUrv3}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    pwn()
+</span></span></code></pre></div>
+          
+          
+          
+        </div>
+        
+        
+
+        
+        
+
+          
+      </div>
+     
+      
+      
+        
+        
+          
+          
+        
+      <script>
+        var oid = "views_posts\/deadface.md"
+        var oid_likes = "likes_posts\/deadface.md"
+      </script>
+      
+      
+      <script type="text/javascript" src="/js/page.min.0860cf4e04fa2d72cc33ddba263083464d48f67de06114529043cb4623319efed4f484fd7f1730df5abea0e2da6f3538855634081d02f2d6e920b956f063e823.js" integrity="sha512-CGDPTgT6LXLMM926JjCDRk1I9n3gYRRSkEPLRiMxnv7U9IT9fxcw31q&#43;oOLabzU4hVY0CB0C8tbpILlW8GPoIw=="></script>
+      
+  
+    </section>
+  <footer class="pt-8 max-w-prose print:hidden">
+
+    
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/posts/blackcogsmail/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Hackday 2025 - The Cogs of Blackmail</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2025-01-27T00:00:00&#43;00:00">January 27, 2025</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+    
+  </footer>
+</article>
+
+      <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
+  <a href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top" title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+    </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+    
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js" integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="https://d0pp3lgang3r.github.io/"
+  style="z-index:500"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+  </div>
+</body>
+
+</html>
