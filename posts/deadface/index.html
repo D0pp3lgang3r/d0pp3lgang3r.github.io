@@ -152,6 +152,17 @@ now we can get the password : booberry and enter it to get the flag : flag{The-M
   <meta name="theme-color"/>
   
   
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/auto-render.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body);
+      });
+    </script>
+  
+
 </head>
 <body
   class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32 scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
@@ -703,11 +714,11 @@ Also the type of curve being used : <br>
 Here is an example of usage of the binary :<br>
 <img src="/images/image_2024-10-20_110928801.png" />
 We notice that the type of curve printed by the binary wasn&rsquo;t the same than the one we saw in the code, so i&rsquo;ve took the elliptic curve parameters of the one in code. <br>
-Before entering in the crypto attack we&rsquo;re going to implement, let&rsquo;s review definition of an Elliptic Curve over a finite field $<code>\mathbb{F}_p</code>$ which is defined by the following equation : $<code>E : Y^2 = X^3 + aX + b \ (mod \ p)</code>$ with $<code>a, b, p</code>$ parameters of the curve, and $<code>(X, Y)</code>$ coordinates of points on the curve, we can add points together and multiply those points, it also exists point at infinity written $<code>O</code>$
-Point addition on $<code>E(\mathbb{F}_p)</code>$ is a bit particular see this theorem :
+Before entering in the crypto attack we&rsquo;re going to implement, let&rsquo;s review definition of an Elliptic Curve over a finite field $<code>\mathbb{F}_p</code>$ which is defined by the following equation : $E : Y^2 = X^3 + aX + b \ (mod \ p)$ with $<code>a, b, p</code>$ parameters of the curve, and $<code>(X, Y)</code>$ coordinates of points on the curve, we can add points together and multiply those points, it also exists point at infinity written $<code>O</code>$
+Point addition on $E(\mathbb{F}_p)$ is a bit particular see this theorem :
 <img src="/images/image_2024-10-20_113514080.png" /><br>
-As we can add points together we can also multiply points by a scalar $<code>l</code>$, for example if i take a random point $<code>P</code>$ on my elliptic curve and compute $<code>lP = Q</code>$ it will give me another point on the curve see double and add algorithm.<br>
-And this is exactly the problem we are facing on this challenge, it is about solving ECDHKE (Elliptic Curve Diffie Hellman Key Exchange) to find the scalar $<code>l</code>$ which is the private key of the server :).<br>
+As we can add points together we can also multiply points by a scalar $l$, for example if i take a random point $P$ on my elliptic curve and compute $lP = Q$ it will give me another point on the curve see double and add algorithm.<br>
+And this is exactly the problem we are facing on this challenge, it is about solving ECDHKE (Elliptic Curve Diffie Hellman Key Exchange) to find the scalar $l$ which is the private key of the server :).<br>
 On the challenge, when I connect to the server it always gives me the same public key :
 <img src="/images/image_2024-10-20_115731173.png"/>
 The curve which is used by the challenge is this one : <a href="https://neuromancer.sk/std/secg/secp256r1" target="_blank">https://neuromancer.sk/std/secg/secp256r1</a>.<br>
@@ -716,7 +727,7 @@ In my terminal :
 <img src="/images/image_2024-10-20_120403181.png">
 <img src="/images/image_2024-10-20_120501477.png">
 To the remote server :
-<img src="image_2024-10-20_120245575.png">
+<img src="images/image_2024-10-20_120245575.png">
 Noticing this, we know it&rsquo;s invalid curve attack that can allow us to get the private key of the server, now let&rsquo;s review what&rsquo;s invalid curve attack.<br>
 As the b constant is not used in the scalar multiplication, we need to find curves with same a but diffferent small b which gives us a smooth order for the curve, we will send multiple evil points from different curves everytime and we will get the answer of the server.<br>
 To generate the evil point, we factorise the order of the curve, take a small factor of it and take a point that has this factor as order.<br>
