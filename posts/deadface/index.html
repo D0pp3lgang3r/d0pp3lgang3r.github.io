@@ -152,6 +152,8 @@ now we can get the password : booberry and enter it to get the flag : flag{The-M
   <meta name="theme-color"/>
   
   
+  <script type="text/javascript" async src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
@@ -727,7 +729,7 @@ In my terminal :
 <img src="/images/image_2024-10-20_120403181.png">
 <img src="/images/image_2024-10-20_120501477.png">
 To the remote server :
-<img src="images/image_2024-10-20_120245575.png">
+<img src="/images/image_2024-10-20_120245575.png">
 Noticing this, we know it&rsquo;s invalid curve attack that can allow us to get the private key of the server, now let&rsquo;s review what&rsquo;s invalid curve attack.<br>
 As the b constant is not used in the scalar multiplication, we need to find curves with same a but diffferent small b which gives us a smooth order for the curve, we will send multiple evil points from different curves everytime and we will get the answer of the server.<br>
 To generate the evil point, we factorise the order of the curve, take a small factor of it and take a point that has this factor as order.<br>
