@@ -716,7 +716,7 @@ Also the type of curve being used : <br>
 Here is an example of usage of the binary :<br>
 <img src="/images/image_2024-10-20_110928801.png" />
 We notice that the type of curve printed by the binary wasn&rsquo;t the same than the one we saw in the code, so i&rsquo;ve took the elliptic curve parameters of the one in code. <br>
-Before entering in the crypto attack we&rsquo;re going to implement, let&rsquo;s review definition of an Elliptic Curve over a finite field $<code>\mathbb{F}_p</code>$ which is defined by the following equation : $E : Y^2 = X^3 + aX + b \ (mod \ p)$ with $<code>a, b, p</code>$ parameters of the curve, and $<code>(X, Y)</code>$ coordinates of points on the curve, we can add points together and multiply those points, it also exists point at infinity written $<code>O</code>$
+Before entering in the crypto attack we&rsquo;re going to implement, let&rsquo;s review definition of an Elliptic Curve over a finite field $<code>\mathbb{F}_p</code>$ which is defined by the following equation : (E : Y^2 = X^3 + aX + b \ (mod \ p)) with $<code>a, b, p</code>$ parameters of the curve, and $<code>(X, Y)</code>$ coordinates of points on the curve, we can add points together and multiply those points, it also exists point at infinity written $<code>O</code>$
 Point addition on $E(\mathbb{F}_p)$ is a bit particular see this theorem :
 <img src="/images/image_2024-10-20_113514080.png" /><br>
 As we can add points together we can also multiply points by a scalar $l$, for example if i take a random point $P$ on my elliptic curve and compute $lP = Q$ it will give me another point on the curve see double and add algorithm.<br>
