@@ -3,59 +3,30 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  show:   { opacity: 1, y: 0 },
-};
-
 const LINKS = [
   {
     platform: 'GitHub',
     kana:     'ギットハブ',
-    handle:   'D0pp3lgang3r',
     url:      'https://github.com/D0pp3lgang3r',
-    desc:     'Open-source tools & projects',
-    icon: (
-      <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
-        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-      </svg>
-    ),
+    desc:     'Open-source tools · 12 repos',
   },
   {
     platform: 'CryptoHack',
     kana:     'クリプトハック',
-    handle:   'D0pp3lgang3r',
     url:      'https://cryptohack.org/user/D0pp3lgang3r/',
     desc:     'Rank #329 · 11 040 pts · 160+ challs',
-    icon: (
-      <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
-        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
-      </svg>
-    ),
   },
   {
     platform: 'Root-Me',
     kana:     'ルートミー',
-    handle:   'D0pp3lgang3r',
     url:      'https://www.root-me.org/D0pp3lgang3r',
-    desc:     'CTF challenges · Multi-category',
-    icon: (
-      <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
-      </svg>
-    ),
+    desc:     'CTF challenges · multi-category',
   },
   {
     platform: 'YesWeHack',
     kana:     'バグバウンティ',
-    handle:   'D0pp3lgang3r',
     url:      'https://yeswehack.com/hunters/D0pp3lgang3r',
-    desc:     '#1 Bug Bounty Platform Europe · Active hunter',
-    icon: (
-      <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
-        <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-7v2h2v-2h-2zm2-1.645A3.502 3.502 0 0 0 12 6.5a3.5 3.5 0 0 0-3.433 2.813l1.962.393A1.5 1.5 0 1 1 13 11a1 1 0 0 0-1 1v1h2v-.645z"/>
-      </svg>
-    ),
+    desc:     'Bug bounty · EU #1 platform',
   },
 ];
 
@@ -65,164 +36,167 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`[Portfolio] Message from ${form.name}`);
-    const body = encodeURIComponent(`From: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
-    window.open(`mailto:D0pp3lgang3rEva@protonmail.com?subject=${subject}&body=${body}`);
+    const s = encodeURIComponent(`[Portfolio] Message from ${form.name}`);
+    const b = encodeURIComponent(`From: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
+    window.open(`mailto:D0pp3lgang3rEva@protonmail.com?subject=${s}&body=${b}`);
     setSent(true);
   };
 
+  const inputStyle: React.CSSProperties = {
+    width: '100%',
+    background: 'rgba(10,10,18,0.7)',
+    border: '1px solid rgba(124,58,237,0.18)',
+    outline: 'none',
+    color: '#e2e8f0',
+    fontFamily: 'JetBrains Mono, monospace',
+    fontSize: '0.82rem',
+    padding: '10px 14px',
+    transition: 'border-color 0.2s',
+  };
+
   return (
-    <div className="min-h-screen pt-28 pb-20">
-      <div className="max-w-5xl mx-auto px-6">
+    <div style={{ minHeight: '100vh', paddingTop: 100, paddingBottom: 80 }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 28px' }}>
 
         {/* Header */}
         <motion.div
-          className="mb-16"
-          initial="hidden"
-          animate="show"
-          variants={{ show: { transition: { staggerChildren: 0.1 } } }}
+          style={{ marginBottom: 56 }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
         >
-          <motion.span variants={fadeUp} className="text-ame-muted text-sm font-jp tracking-widest block mb-4">
+          <p style={{ fontFamily: "'Noto Sans JP', sans-serif", fontSize: '0.7rem', color: '#475569', letterSpacing: '0.2em', marginBottom: 12 }}>
             連絡先 / CONTACT
-          </motion.span>
-          <motion.h1
-            variants={fadeUp}
-            className="text-4xl md:text-5xl font-orbitron font-black text-ame-text mb-4"
-            style={{ fontFamily: 'Orbitron, monospace' }}
-          >
+          </p>
+          <h1 style={{ fontFamily: 'Orbitron, monospace', fontSize: 'clamp(1.8rem, 5vw, 2.8rem)', fontWeight: 900, color: '#e2e8f0', marginBottom: 12 }}>
             GET IN TOUCH
-          </motion.h1>
-          <motion.p variants={fadeUp} className="text-ame-muted font-mono text-sm max-w-xl">
-            CTF collab, bug bounty tips, research, or just say hi — je suis dispo.
-          </motion.p>
+          </h1>
+          <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.82rem', color: '#64748b', maxWidth: 520 }}>
+            CTF collab, bug bounty, research, ou juste bonjour.
+          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-10">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 48 }}>
 
-          {/* Social links */}
+          {/* Profiles */}
           <motion.div
-            initial="hidden"
-            animate="show"
-            variants={{ show: { transition: { staggerChildren: 0.1 } } }}
+            initial={{ opacity: 0, x: -16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.1, duration: 0.4 }}
           >
-            <motion.h2
-              variants={fadeUp}
-              className="font-orbitron font-bold text-sm tracking-widest text-ame-muted mb-6"
-              style={{ fontFamily: 'Orbitron, monospace' }}
-            >
-              PROFILS
-            </motion.h2>
-
-            <div className="space-y-4">
-              {LINKS.map(link => (
-                <motion.a
+            <p style={{ fontFamily: 'Orbitron, monospace', fontSize: '0.62rem', color: '#4c1d95', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 20 }}>
+              — Profils
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              {LINKS.map((link, i) => (
+                <motion.div
                   key={link.platform}
-                  variants={fadeUp}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="panel p-4 flex items-center gap-4 group block hover:scale-[1.02] transition-transform duration-300"
+                  initial={{ opacity: 0, x: -8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 + i * 0.07 }}
                 >
-                  <div className="text-ame-muted group-hover:text-ame-rain transition-colors duration-300 flex-shrink-0">
-                    {link.icon}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-ame-muted text-xs font-jp mb-0.5">{link.kana}</div>
-                    <div
-                      className="font-orbitron font-bold text-xs text-ame-text group-hover:text-ame-rain transition-colors duration-300 tracking-wider"
-                      style={{ fontFamily: 'Orbitron, monospace' }}
-                    >
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'baseline',
+                      gap: '16px',
+                      padding: '12px 0',
+                      borderBottom: '1px solid rgba(124,58,237,0.09)',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    <span style={{ fontFamily: 'Orbitron, monospace', fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.1em', color: '#e2e8f0', minWidth: 100 }}>
                       {link.platform}
-                    </div>
-                    <div className="text-ame-dim text-xs font-mono truncate">{link.desc}</div>
-                  </div>
-                  <div className="text-ame-purple/50 group-hover:text-ame-rain transition-colors text-xs">
-                    ↗
-                  </div>
-                </motion.a>
+                    </span>
+                    <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.7rem', color: '#475569', flex: 1 }}>
+                      {link.desc}
+                    </span>
+                    <span style={{ color: '#4c1d95', fontFamily: 'JetBrains Mono, monospace', fontSize: '0.75rem' }}>↗</span>
+                  </a>
+                </motion.div>
               ))}
             </div>
           </motion.div>
 
-          {/* Contact form */}
+          {/* Form */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
+            initial={{ opacity: 0, x: 16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.15, duration: 0.4 }}
           >
-            <h2
-              className="font-orbitron font-bold text-sm tracking-widest text-ame-muted mb-6"
-              style={{ fontFamily: 'Orbitron, monospace' }}
-            >
-              MESSAGE
-            </h2>
+            <p style={{ fontFamily: 'Orbitron, monospace', fontSize: '0.62rem', color: '#4c1d95', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 20 }}>
+              — Message
+            </p>
 
             {sent ? (
-              <div className="panel p-8 text-center">
-                <div className="text-4xl mb-4">☁️</div>
-                <p className="font-orbitron font-bold text-ame-rain text-sm mb-2" style={{ fontFamily: 'Orbitron, monospace' }}>
+              <div className="panel" style={{ padding: '40px 28px', textAlign: 'center' }}>
+                <p style={{ fontFamily: 'Orbitron, monospace', fontSize: '0.78rem', color: '#a78bfa', marginBottom: 8 }}>
                   MESSAGE ENVOYÉ
                 </p>
-                <p className="text-ame-muted font-mono text-xs">
-                  Ton client mail s&apos;est ouvert. À bientôt.
+                <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.75rem', color: '#475569', marginBottom: 20 }}>
+                  Client mail ouvert. À bientôt.
                 </p>
                 <button
                   onClick={() => setSent(false)}
-                  className="mt-6 text-ame-purple text-xs font-mono hover:text-ame-rain transition-colors"
+                  style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.72rem', color: '#7c3aed', background: 'none', border: 'none', cursor: 'pointer' }}
                 >
                   ← Nouveau message
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="panel p-6 space-y-5">
+              <form onSubmit={handleSubmit} className="panel" style={{ padding: '28px 28px', display: 'flex', flexDirection: 'column', gap: 18 }}>
                 {[
-                  { id: 'name',    label: 'NOM',     type: 'text',  placeholder: 'Your name' },
-                  { id: 'email',   label: 'EMAIL',   type: 'email', placeholder: 'your@email.com' },
-                ].map(field => (
-                  <div key={field.id}>
-                    <label
-                      htmlFor={field.id}
-                      className="block text-ame-muted text-xs font-mono mb-1.5 tracking-widest"
-                    >
-                      {field.label}
+                  { id: 'name',  label: 'NOM',   type: 'text',  ph: 'Your name' },
+                  { id: 'email', label: 'EMAIL', type: 'email', ph: 'your@email.com' },
+                ].map(f => (
+                  <div key={f.id}>
+                    <label style={{ display: 'block', fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: '#475569', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 6 }}>
+                      {f.label}
                     </label>
                     <input
-                      id={field.id}
-                      type={field.type}
-                      required
-                      placeholder={field.placeholder}
-                      value={form[field.id as keyof typeof form]}
-                      onChange={e => setForm(prev => ({ ...prev, [field.id]: e.target.value }))}
-                      className="w-full bg-ame-black/60 border border-ame-steel/60 focus:border-ame-purple/60 outline-none text-ame-text font-mono text-sm px-4 py-2.5 transition-colors duration-200 placeholder:text-ame-dim"
+                      id={f.id} type={f.type} required placeholder={f.ph}
+                      value={form[f.id as keyof typeof form]}
+                      onChange={e => setForm(p => ({ ...p, [f.id]: e.target.value }))}
+                      style={inputStyle}
+                      onFocus={e => (e.target.style.borderColor = 'rgba(124,58,237,0.45)')}
+                      onBlur={e => (e.target.style.borderColor = 'rgba(124,58,237,0.18)')}
                     />
                   </div>
                 ))}
-
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-ame-muted text-xs font-mono mb-1.5 tracking-widest"
-                  >
+                  <label style={{ display: 'block', fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: '#475569', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 6 }}>
                     MESSAGE
                   </label>
                   <textarea
-                    id="message"
-                    required
-                    rows={5}
-                    placeholder="Your message..."
+                    required rows={5} placeholder="Your message..."
                     value={form.message}
-                    onChange={e => setForm(prev => ({ ...prev, message: e.target.value }))}
-                    className="w-full bg-ame-black/60 border border-ame-steel/60 focus:border-ame-purple/60 outline-none text-ame-text font-mono text-sm px-4 py-2.5 resize-none transition-colors duration-200 placeholder:text-ame-dim"
+                    onChange={e => setForm(p => ({ ...p, message: e.target.value }))}
+                    style={{ ...inputStyle, resize: 'none' }}
+                    onFocus={e => (e.target.style.borderColor = 'rgba(124,58,237,0.45)')}
+                    onBlur={e => (e.target.style.borderColor = 'rgba(124,58,237,0.18)')}
                   />
                 </div>
-
                 <button
                   type="submit"
-                  className="w-full py-3 font-orbitron font-bold text-xs tracking-widest text-ame-black bg-ame-purple hover:bg-ame-rain transition-all duration-300"
                   style={{
                     fontFamily: 'Orbitron, monospace',
-                    clipPath: 'polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)',
+                    fontSize: '0.68rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.14em',
+                    textTransform: 'uppercase',
+                    padding: '11px 0',
+                    background: '#7c3aed',
+                    color: '#050508',
+                    border: 'none',
+                    cursor: 'pointer',
+                    transition: 'background 0.2s',
+                    width: '100%',
                   }}
+                  onMouseEnter={e => ((e.target as HTMLElement).style.background = '#a78bfa')}
+                  onMouseLeave={e => ((e.target as HTMLElement).style.background = '#7c3aed')}
                 >
                   ENVOYER ↗
                 </button>

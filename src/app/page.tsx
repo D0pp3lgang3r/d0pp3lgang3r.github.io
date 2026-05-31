@@ -2,291 +2,230 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
+import InteractiveTerminal from '@/components/InteractiveTerminal';
+import RootMeStats from '@/components/RootMeStats';
+
+const fade    = { hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0, transition: { duration: 0.4 } } };
+const stagger = { show: { transition: { staggerChildren: 0.08 } } };
+
+const GithubIcon = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+  </svg>
+);
+const ShieldIcon = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+    <path d="M12 2L3 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4z"/>
+  </svg>
+);
+const LockIcon = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+    <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+  </svg>
+);
+const BugIcon = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+    <path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C13 5.06 12.51 5 12 5s-1 .06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z"/>
+  </svg>
+);
+
+const PLATFORMS = [
+  { name: 'GitHub',     stat: '12 repos',            color: '#e2e8f0', url: 'https://github.com/D0pp3lgang3r',                    icon: <GithubIcon /> },
+  { name: 'Root-Me',    stat: 'Top 25 · 20 010 pts', color: '#ef4444', url: 'https://www.root-me.org/D0pp3lgang3r',              icon: <ShieldIcon /> },
+  { name: 'CryptoHack', stat: '#329 · 11 040 pts',   color: '#a78bfa', url: 'https://cryptohack.org/user/D0pp3lgang3r/',         icon: <LockIcon />   },
+  { name: 'YesWeHack',  stat: 'Bug bounty hunter',   color: '#06b6d4', url: 'https://yeswehack.com/hunters/D0pp3lgang3r',        icon: <BugIcon />    },
+];
 
 const STATS = [
-  { label: 'CryptoHack Rank', value: '#329', sub: '11 040 pts' },
-  { label: 'Challenges Solved', value: '160+', sub: 'Crypto focused' },
-  { label: 'GitHub Repos', value: '12', sub: 'Public tools' },
-  { label: 'Platform', value: 'Root-Me', sub: 'Bug bounty hunter' },
+  { val: 'Top 25',  label: 'Root-Me',        sub: '20 010 pts'          },
+  { val: '#329',    label: 'CryptoHack',      sub: '11 040 pts'          },
+  { val: '1 000+',  label: 'CTF Challenges',  sub: 'Solved across platforms' },
+  { val: '12',      label: 'GitHub Repos',    sub: 'Open source tools'   },
 ];
 
-const FEATURED = [
-  {
-    icon: '⬡',
-    title: 'Cryptography',
-    desc: 'RSA, ECC, Lattices, Isogenies, Zero-Knowledge Proofs — deep crypto puzzle solving on CryptoHack.',
-    color: 'ame-purple',
-  },
-  {
-    icon: '⬡',
-    title: 'Network Security',
-    desc: 'Custom tools for XMPP & SNMP authentication recovery. Protocol-level offensive research.',
-    color: 'ame-cyber',
-  },
-  {
-    icon: '⬡',
-    title: 'Bug Bounty',
-    desc: 'Active hunter on YesWeHack — vulnerability research on real-world targets.',
-    color: 'ame-rain',
-  },
-];
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show:   { opacity: 1, y: 0 },
-};
-
-export default function HomePage() {
+export default function Home() {
   return (
-    <div className="min-h-screen pt-28 pb-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <div style={{ paddingBottom: 80 }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 28px' }}>
 
-        {/* ── Hero ────────────────────────────────────────────────────────── */}
-        <motion.section
-          className="mb-24"
-          initial="hidden"
-          animate="show"
-          variants={{ show: { transition: { staggerChildren: 0.12 } } }}
-        >
-          {/* Kana header */}
-          <motion.div variants={fadeUp} className="mb-6">
-            <span className="text-ame-muted text-sm font-jp tracking-widest">
-              雨隠れの里 / AMEGAKURE NO SATO
-            </span>
-          </motion.div>
-
-          {/* Name glitch */}
-          <motion.h1
-            variants={fadeUp}
-            className="font-orbitron font-black tracking-tight mb-4 leading-none"
-            style={{ fontFamily: 'Orbitron, monospace' }}
-          >
-            <span
-              className="glitch text-5xl md:text-7xl lg:text-8xl text-ame-text"
-              data-text="D0PP3LGANG3R"
-            >
-              D0PP3L
-            </span>
-            <br />
-            <span
-              className="glitch text-5xl md:text-7xl lg:text-8xl text-ame-purple"
-              data-text="GANG3R"
-            >
-              GANG3R
-            </span>
-          </motion.h1>
-
-          {/* Tagline */}
-          <motion.p
-            variants={fadeUp}
-            className="text-ame-muted font-mono text-sm md:text-base max-w-xl mb-2 leading-relaxed"
-          >
-            <span className="text-ame-cyber">$</span>{' '}
-            French Polytech student — hacking stuff for fun.
-          </motion.p>
-          <motion.p
-            variants={fadeUp}
-            className="text-ame-dim font-mono text-xs md:text-sm max-w-xl mb-10 leading-relaxed cursor"
-          >
-            Cryptography · Network Security · CTF · Bug Bounty
-          </motion.p>
-
-          {/* CTA buttons */}
-          <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
-            <Link
-              href="/writeups"
-              className="px-6 py-3 font-orbitron text-xs font-bold tracking-widest text-ame-black bg-ame-purple hover:bg-ame-rain transition-all duration-300 clip-path-none"
-              style={{
-                fontFamily: 'Orbitron, monospace',
-                clipPath: 'polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)',
-              }}
-            >
-              WRITEUPS
-            </Link>
-            <Link
-              href="/skills"
-              className="px-6 py-3 font-orbitron text-xs font-bold tracking-widest text-ame-rain border border-ame-purple/50 hover:border-ame-rain hover:bg-ame-purple/10 transition-all duration-300"
-              style={{
-                fontFamily: 'Orbitron, monospace',
-                clipPath: 'polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)',
-              }}
-            >
-              SKILLS
-            </Link>
-            <a
-              href="https://github.com/D0pp3lgang3r"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 font-orbitron text-xs font-bold tracking-widest text-ame-muted border border-ame-steel hover:border-ame-purple/40 hover:text-ame-text transition-all duration-300"
-              style={{
-                fontFamily: 'Orbitron, monospace',
-                clipPath: 'polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)',
-              }}
-            >
-              GITHUB
-            </a>
-          </motion.div>
-        </motion.section>
-
-        {/* ── Stats ───────────────────────────────────────────────────────── */}
-        <motion.section
-          className="mb-24"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={{ show: { transition: { staggerChildren: 0.1 } } }}
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {STATS.map(stat => (
-              <motion.div
-                key={stat.label}
-                variants={fadeUp}
-                className="panel p-5 text-center hover:scale-105 transition-transform duration-300"
-              >
-                <div
-                  className="text-3xl md:text-4xl font-orbitron font-black text-ame-rain mb-1"
-                  style={{ fontFamily: 'Orbitron, monospace' }}
-                >
-                  {stat.value}
-                </div>
-                <div className="text-ame-text text-xs font-mono font-semibold mb-1 tracking-wide">
-                  {stat.label}
-                </div>
-                <div className="text-ame-muted text-xs font-mono">{stat.sub}</div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
-
-        {/* ── Divider ─────────────────────────────────────────────────────── */}
-        <div className="ame-divider" />
-
-        {/* ── Featured areas ──────────────────────────────────────────────── */}
-        <motion.section
-          className="mb-24"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-80px' }}
-          variants={{ show: { transition: { staggerChildren: 0.15 } } }}
-        >
-          <motion.div variants={fadeUp} className="mb-10">
-            <span className="tag mb-3">Focus</span>
-            <h2
-              className="text-2xl md:text-3xl font-orbitron font-bold text-ame-text mt-3"
-              style={{ fontFamily: 'Orbitron, monospace' }}
-            >
-              DOMAINES D&apos;EXPERTISE
-            </h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {FEATURED.map((item, i) => (
-              <motion.div
-                key={item.title}
-                variants={fadeUp}
-                className="panel p-6 group cursor-default"
-                style={{ animationDelay: `${i * 0.1}s` }}
-              >
-                <div className="text-3xl mb-4 text-ame-purple group-hover:text-ame-rain transition-colors duration-300 font-mono">
-                  {item.icon}
-                </div>
-                <h3
-                  className="font-orbitron font-bold text-sm tracking-wider text-ame-text mb-3 group-hover:text-ame-rain transition-colors duration-300"
-                  style={{ fontFamily: 'Orbitron, monospace' }}
-                >
-                  {item.title}
-                </h3>
-                <p className="text-ame-muted text-xs font-mono leading-relaxed">
-                  {item.desc}
+        {/* ── Hero ─────────────────────────────────────────────── */}
+        <motion.div initial="hidden" animate="show" variants={stagger}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr auto',
+            alignItems: 'center',
+            gap: 48,
+            paddingTop: 72,
+            paddingBottom: 48,
+          }}>
+            {/* Left */}
+            <div>
+              <motion.div variants={fade}>
+                <p style={{ fontFamily: "'Noto Sans JP',sans-serif", fontSize: '0.68rem', color: '#475569', letterSpacing: '0.22em', marginBottom: 14 }}>
+                  雨隠れの里 / AMEGAKURE NO SATO
                 </p>
               </motion.div>
-            ))}
-          </div>
-        </motion.section>
 
-        {/* ── Terminal block ──────────────────────────────────────────────── */}
-        <motion.section
-          className="mb-24"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={fadeUp}
-        >
-          <div className="panel p-6 md:p-8">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-3 h-3 rounded-full bg-ame-blood/70" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-              <div className="w-3 h-3 rounded-full bg-green-500/50" />
-              <span className="ml-3 text-ame-muted text-xs font-mono">whoami</span>
-            </div>
-            <div className="font-mono text-sm text-ame-muted space-y-1.5">
-              <p>
-                <span className="text-ame-purple">d0pp3lgang3r</span>
-                <span className="text-ame-dim">@</span>
-                <span className="text-ame-cyber">amegakure</span>
-                <span className="text-ame-dim">:~$</span>{' '}
-                <span className="text-ame-text">whoami</span>
-              </p>
-              <p className="text-ame-rain pl-4">
-                French Polytech student passionate about cybersecurity
-              </p>
-              <p className="pt-2">
-                <span className="text-ame-purple">d0pp3lgang3r</span>
-                <span className="text-ame-dim">@</span>
-                <span className="text-ame-cyber">amegakure</span>
-                <span className="text-ame-dim">:~$</span>{' '}
-                <span className="text-ame-text">cat interests.txt</span>
-              </p>
-              <div className="pl-4 space-y-0.5 text-xs">
-                <p><span className="text-ame-purple">■</span> Cryptography — RSA, ECC, Lattices, Isogenies, ZK-Proofs</p>
-                <p><span className="text-ame-purple">■</span> Network Security — Protocol analysis, XMPP, SNMP</p>
-                <p><span className="text-ame-purple">■</span> CTF competitions — CryptoHack Rank #329 | Root-Me</p>
-                <p><span className="text-ame-purple">■</span> Bug Bounty — YesWeHack active hunter</p>
-                <p><span className="text-ame-purple">■</span> Anime — Naruto / Amegakure no Sato enthusiast</p>
-              </div>
-              <p className="pt-2">
-                <span className="text-ame-purple">d0pp3lgang3r</span>
-                <span className="text-ame-dim">@</span>
-                <span className="text-ame-cyber">amegakure</span>
-                <span className="text-ame-dim">:~$</span>
-                <span className="cursor" />
-              </p>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* ── Quick nav ───────────────────────────────────────────────────── */}
-        <motion.section
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={{ show: { transition: { staggerChildren: 0.1 } } }}
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { href: '/skills',   label: 'SKILLS',   kana: 'スキル',   desc: 'Tech stack & expertise' },
-              { href: '/articles', label: 'ARTICLES',  kana: '記事',     desc: 'Technical writings' },
-              { href: '/writeups', label: 'WRITEUPS',  kana: '解答',     desc: 'CTF solutions' },
-              { href: '/contact',  label: 'CONTACT',   kana: '連絡先',   desc: 'Get in touch' },
-            ].map(item => (
-              <motion.div key={item.href} variants={fadeUp}>
-                <Link
-                  href={item.href}
-                  className="panel p-5 block group hover:scale-105 transition-transform duration-300"
+              <motion.div variants={fade}>
+                <span
+                  className="glitch"
+                  data-text="D0PP3LGANG3R"
+                  style={{
+                    fontFamily: 'Orbitron, monospace',
+                    fontSize: 'clamp(2.2rem, 6.5vw, 4.8rem)',
+                    fontWeight: 900, color: '#e2e8f0',
+                    letterSpacing: '-0.01em', display: 'block',
+                    marginBottom: 14,
+                  }}
                 >
-                  <div className="text-ame-muted text-xs font-jp mb-1 group-hover:text-ame-purple transition-colors">{item.kana}</div>
-                  <div
-                    className="text-ame-text font-orbitron font-bold text-sm tracking-wider group-hover:text-ame-rain transition-colors duration-300"
-                    style={{ fontFamily: 'Orbitron, monospace' }}
-                  >
-                    {item.label}
+                  D0PP3LGANG3R
+                </span>
+              </motion.div>
+
+              <motion.div variants={fade}>
+                <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.86rem', color: '#64748b', marginBottom: 5, maxWidth: 480 }}>
+                  <span style={{ color: '#06b6d4' }}>$</span>&nbsp;French Polytech student — hacking stuff for fun.
+                </p>
+                <p className="cursor" style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.74rem', color: '#475569', marginBottom: 28 }}>
+                  Cryptography · Network Security · CTF · Bug Bounty
+                </p>
+              </motion.div>
+
+              <motion.div variants={fade}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+                  {[
+                    { href: '/writeups', label: 'WRITEUPS', primary: true  },
+                    { href: '/articles', label: 'ARTICLES', primary: false },
+                    { href: '/skills',   label: 'SKILLS',   primary: false },
+                  ].map(btn => (
+                    <Link key={btn.href} href={btn.href} style={{
+                      fontFamily: 'Orbitron, monospace', fontSize: '0.65rem', fontWeight: 700,
+                      letterSpacing: '0.14em', textTransform: 'uppercase', textDecoration: 'none',
+                      padding: '9px 20px',
+                      background: btn.primary ? '#7c3aed' : 'transparent',
+                      color: btn.primary ? '#050508' : '#a78bfa',
+                      border: '1px solid', borderColor: btn.primary ? '#7c3aed' : 'rgba(124,58,237,0.35)',
+                    }}>
+                      {btn.label}
+                    </Link>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right: avatar */}
+            <motion.div variants={fade}>
+              <div style={{ position: 'relative', width: 190, height: 190, flexShrink: 0 }}>
+                <div style={{
+                  position: 'absolute', inset: -3, borderRadius: '50%',
+                  background: 'conic-gradient(from 0deg, #7c3aed, #a78bfa, #06b6d4, #7c3aed)',
+                  animation: 'spin-slow 8s linear infinite',
+                }} />
+                <div style={{ position: 'absolute', inset: 2, borderRadius: '50%', background: '#050508' }} />
+                <div style={{ position: 'absolute', inset: 4, borderRadius: '50%', overflow: 'hidden' }}>
+                  <Image src="/images/doppel.jpeg" alt="D0pp3lgang3r" fill style={{ objectFit: 'cover' }} priority />
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* ── Stats strip ───────────────────────────────────────── */}
+        <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
+          <div style={{ marginBottom: 48 }}>
+            <div className="panel" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
+              {STATS.map((s, i) => (
+                <div key={s.label} style={{
+                  padding: '18px 16px', textAlign: 'center',
+                  borderRight: i < 3 ? '1px solid rgba(124,58,237,0.12)' : 'none',
+                }}>
+                  <div style={{ fontFamily: 'Orbitron, monospace', fontSize: 'clamp(0.95rem, 2.2vw, 1.45rem)', fontWeight: 800, color: '#a78bfa', marginBottom: 4 }}>
+                    {s.val}
                   </div>
-                  <div className="text-ame-muted text-xs font-mono mt-1">{item.desc}</div>
+                  <div style={{ fontSize: '0.7rem', color: '#e2e8f0', fontFamily: 'JetBrains Mono, monospace', marginBottom: 2 }}>
+                    {s.label}
+                  </div>
+                  <div style={{ fontSize: '0.6rem', color: '#475569', fontFamily: 'JetBrains Mono, monospace' }}>
+                    {s.sub}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* ── Profils + Root-Me ─────────────────────────────────── */}
+        <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
+          <div style={{ marginBottom: 48, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, alignItems: 'start' }}>
+
+            {/* Platform cards */}
+            <div>
+              <p style={{ fontFamily: 'Orbitron, monospace', fontSize: '0.6rem', color: '#4c1d95', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 14 }}>
+                — Profils
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                {PLATFORMS.map(p => (
+                  <a key={p.name} href={p.url} target="_blank" rel="noopener noreferrer"
+                    className="panel platform-card"
+                    style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', textDecoration: 'none' }}
+                  >
+                    <div style={{ color: p.color, flexShrink: 0 }}>{p.icon}</div>
+                    <div>
+                      <div style={{ fontFamily: 'Orbitron, monospace', fontSize: '0.68rem', fontWeight: 700, color: '#e2e8f0', letterSpacing: '0.06em' }}>
+                        {p.name}
+                      </div>
+                      <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.62rem', color: '#475569', marginTop: 1 }}>
+                        {p.stat}
+                      </div>
+                    </div>
+                    <span style={{ marginLeft: 'auto', color: '#4c1d95', fontSize: '0.75rem' }}>↗</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Root-Me stats block */}
+            <div>
+              <p style={{ fontFamily: 'Orbitron, monospace', fontSize: '0.6rem', color: '#4c1d95', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 14 }}>
+                — Root-Me Stats
+              </p>
+              <RootMeStats />
+            </div>
+          </div>
+        </motion.div>
+
+        <div className="ame-divider" />
+
+        {/* ── Terminal ──────────────────────────────────────────── */}
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+          <div style={{ marginBottom: 48 }}>
+            <p style={{ fontFamily: 'Orbitron, monospace', fontSize: '0.6rem', color: '#4c1d95', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 14 }}>
+              — Terminal interactif
+            </p>
+            <InteractiveTerminal />
+          </div>
+        </motion.div>
+
+        {/* ── Quick nav ─────────────────────────────────────────── */}
+        <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 10 }}>
+            {[
+              { href: '/skills',   en: 'SKILLS',   jp: 'スキル',  desc: 'Stack & expertise'  },
+              { href: '/articles', en: 'ARTICLES',  jp: '記事',   desc: 'Technical writings' },
+              { href: '/writeups', en: 'WRITEUPS',  jp: '解答',   desc: 'CTF solutions'       },
+              { href: '/contact',  en: 'CONTACT',   jp: '連絡先', desc: 'Get in touch'        },
+            ].map(item => (
+              <motion.div key={item.href} variants={fade}>
+                <Link href={item.href} className="panel" style={{ display: 'block', padding: '16px 18px', textDecoration: 'none' }}>
+                  <div style={{ fontFamily: "'Noto Sans JP',sans-serif", fontSize: '0.62rem', color: '#475569', marginBottom: 3 }}>{item.jp}</div>
+                  <div style={{ fontFamily: 'Orbitron, monospace', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.1em', color: '#e2e8f0', marginBottom: 3 }}>{item.en}</div>
+                  <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: '#475569' }}>{item.desc}</div>
                 </Link>
               </motion.div>
             ))}
           </div>
-        </motion.section>
+        </motion.div>
 
       </div>
     </div>

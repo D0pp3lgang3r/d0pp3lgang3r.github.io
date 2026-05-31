@@ -15,45 +15,51 @@ export default function PostCard({ post, type, index }: PostCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.08, duration: 0.4 }}
+      initial={{ opacity: 0, x: -8 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: index * 0.06, duration: 0.35 }}
     >
-      <Link href={href} className="panel p-6 block group hover:scale-[1.01] transition-transform duration-300">
-        {/* Meta row */}
-        <div className="flex items-center gap-3 mb-3">
-          <span className="text-ame-muted text-xs font-mono">{post.date}</span>
-          <span className="text-ame-dim">·</span>
-          <span className="text-ame-muted text-xs font-mono">{post.readingTime}</span>
-        </div>
+      <Link href={href} className="post-row" style={{ textDecoration: 'none' }}>
+        {/* Date */}
+        <span className="post-row-date">{post.date || '—'}</span>
 
-        {/* Title */}
-        <h3
-          className="font-orbitron font-bold text-sm tracking-wide text-ame-text group-hover:text-ame-rain transition-colors duration-300 mb-2 leading-snug"
-          style={{ fontFamily: 'Orbitron, monospace' }}
-        >
-          {post.title}
-        </h3>
+        {/* Title + description */}
+        <span>
+          <span className="post-row-title">{post.title}</span>
+          {post.description && (
+            <span
+              style={{
+                display: 'block',
+                fontFamily: 'JetBrains Mono, monospace',
+                fontSize: '0.72rem',
+                color: '#475569',
+                marginTop: 2,
+              }}
+            >
+              {post.description.length > 80
+                ? post.description.slice(0, 80) + '…'
+                : post.description}
+            </span>
+          )}
+        </span>
 
-        {/* Description */}
-        {post.description && (
-          <p className="text-ame-muted text-xs font-mono leading-relaxed mb-4 line-clamp-2">
-            {post.description}
-          </p>
-        )}
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2">
-          {post.tags.map(tag => (
-            <span key={tag} className="tag text-xs">{tag}</span>
+        {/* Tags + arrow */}
+        <span className="post-row-meta">
+          {post.tags.slice(0, 2).map(tag => (
+            <span key={tag} className="tag">{tag}</span>
           ))}
-        </div>
-
-        {/* Arrow */}
-        <div className="mt-4 text-ame-purple/50 group-hover:text-ame-rain transition-colors text-xs font-mono">
-          READ MORE →
-        </div>
+          <span
+            style={{
+              color: '#4c1d95',
+              fontFamily: 'JetBrains Mono, monospace',
+              fontSize: '0.75rem',
+              marginLeft: 4,
+              transition: 'color 0.2s',
+            }}
+          >
+            →
+          </span>
+        </span>
       </Link>
     </motion.div>
   );

@@ -1,102 +1,99 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import PostCard from '@/components/PostCard';
 import type { PostMeta } from '@/lib/markdown';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  show:   { opacity: 1, y: 0 },
-};
-
 export default function WriteupsClient({ initialPosts }: { initialPosts: PostMeta[] }) {
-  const [filter, setFilter]       = useState('');
+  const [filter,    setFilter]    = useState('');
   const [activeTag, setActiveTag] = useState<string | null>(null);
 
-  const allTags = Array.from(new Set(initialPosts.flatMap(p => p.tags)));
-
+  const allTags  = Array.from(new Set(initialPosts.flatMap(p => p.tags)));
   const filtered = initialPosts.filter(p => {
-    const matchText = filter === '' ||
+    const matchText = !filter ||
       p.title.toLowerCase().includes(filter.toLowerCase()) ||
       p.description.toLowerCase().includes(filter.toLowerCase());
-    const matchTag = activeTag === null || p.tags.includes(activeTag);
+    const matchTag = !activeTag || p.tags.includes(activeTag);
     return matchText && matchTag;
   });
 
   return (
-    <div className="min-h-screen pt-28 pb-20">
-      <div className="max-w-5xl mx-auto px-6">
-        <motion.div
-          className="mb-12"
-          initial="hidden"
-          animate="show"
-          variants={{ show: { transition: { staggerChildren: 0.1 } } }}
-        >
-          <motion.span variants={fadeUp} className="text-ame-muted text-sm font-jp tracking-widest block mb-4">
-            解答 / WRITEUPS
-          </motion.span>
-          <motion.h1
-            variants={fadeUp}
-            className="text-4xl md:text-5xl font-orbitron font-black text-ame-text mb-4"
-            style={{ fontFamily: 'Orbitron, monospace' } as React.CSSProperties}
-          >
-            WRITEUPS
-          </motion.h1>
-          <motion.p variants={fadeUp} className="text-ame-muted font-mono text-sm max-w-xl">
-            Solutions détaillées de challenges CTF — CryptoHack, Root-Me, et autres compétitions.
-          </motion.p>
-        </motion.div>
+    <div style={{ minHeight: '100vh', paddingTop: 72, paddingBottom: 60 }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 28px' }}>
 
-        <motion.div
-          className="mb-10 space-y-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-        >
-          <input
-            type="text"
-            placeholder="Search writeups..."
-            value={filter}
-            onChange={e => setFilter(e.target.value)}
-            className="w-full bg-ame-black/60 border border-ame-steel/60 focus:border-ame-purple/60 outline-none text-ame-text font-mono text-sm px-4 py-2.5 transition-colors duration-200 placeholder:text-ame-dim max-w-md"
-          />
-          {allTags.length > 0 && (
-            <div className="flex flex-wrap gap-2">
-              <button
-                onClick={() => setActiveTag(null)}
-                className={`tag text-xs transition-all ${activeTag === null ? 'border-ame-rain/60 text-ame-rain bg-ame-purple/15' : ''}`}
-              >
-                ALL
-              </button>
-              {allTags.map(tag => (
-                <button
-                  key={tag}
-                  onClick={() => setActiveTag(activeTag === tag ? null : tag)}
-                  className={`tag text-xs transition-all ${activeTag === tag ? 'border-ame-rain/60 text-ame-rain bg-ame-purple/15' : ''}`}
-                >
-                  {tag}
-                </button>
-              ))}
-            </div>
-          )}
-        </motion.div>
-
-        {filtered.length === 0 ? (
-          <div className="panel p-12 text-center">
-            <p className="text-ame-muted font-mono text-sm">
-              {initialPosts.length === 0
-                ? "Aucun writeup pour l'instant — bientôt disponible."
-                : 'Aucun résultat pour cette recherche.'}
+        {/* Header */}
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+          <div style={{ marginBottom: 40 }}>
+            <p style={{ fontFamily: "'Noto Sans JP', sans-serif", fontSize: '0.7rem', color: '#475569', letterSpacing: '0.2em', marginBottom: 10 }}>
+              解答 / WRITEUPS
+            </p>
+            <h1 style={{ fontFamily: 'Orbitron, monospace', fontSize: 'clamp(1.8rem, 5vw, 2.8rem)', fontWeight: 900, color: '#e2e8f0', marginBottom: 10 }}>
+              WRITEUPS
+            </h1>
+            <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.82rem', color: '#64748b', maxWidth: 520 }}>
+              Solutions CTF — CryptoHack, Root-Me, et autres compétitions.
             </p>
           </div>
+        </motion.div>
+
+        {/* Search + filters */}
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }}>
+          <div style={{ marginBottom: 28, display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <input
+              type="text"
+              placeholder="Rechercher..."
+              value={filter}
+              onChange={e => setFilter(e.target.value)}
+              style={{
+                background: 'rgba(10,10,18,0.6)',
+                border: '1px solid rgba(124,58,237,0.2)',
+                outline: 'none',
+                color: '#e2e8f0',
+                fontFamily: 'JetBrains Mono, monospace',
+                fontSize: '0.8rem',
+                padding: '8px 14px',
+                maxWidth: 320,
+                transition: 'border-color 0.2s',
+              }}
+              onFocus={e => (e.target.style.borderColor = 'rgba(124,58,237,0.5)')}
+              onBlur={e  => (e.target.style.borderColor = 'rgba(124,58,237,0.2)')}
+            />
+            {allTags.length > 0 && (
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                <button onClick={() => setActiveTag(null)} className="tag" style={{ cursor: 'pointer', background: !activeTag ? 'rgba(124,58,237,0.18)' : undefined, borderColor: !activeTag ? 'rgba(167,139,250,0.5)' : undefined, color: !activeTag ? '#c4b5fd' : undefined }}>
+                  ALL
+                </button>
+                {allTags.map(tag => (
+                  <button key={tag} onClick={() => setActiveTag(activeTag === tag ? null : tag)} className="tag" style={{ cursor: 'pointer', background: activeTag === tag ? 'rgba(124,58,237,0.18)' : undefined, borderColor: activeTag === tag ? 'rgba(167,139,250,0.5)' : undefined, color: activeTag === tag ? '#c4b5fd' : undefined }}>
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>{/* end flex column */}
+        </motion.div>
+
+        {/* Column header */}
+        <div style={{ display: 'grid', gridTemplateColumns: '7rem 1fr auto', gap: '1.5rem', padding: '6px 0 10px', borderBottom: '1px solid rgba(124,58,237,0.22)' }}>
+          {['DATE', 'TITRE', 'TAGS'].map(h => (
+            <span key={h} style={{ fontFamily: 'Orbitron, monospace', fontSize: '0.6rem', color: '#4c1d95', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+              {h}
+            </span>
+          ))}
+        </div>
+
+        {/* List */}
+        {filtered.length === 0 ? (
+          <div style={{ padding: '48px 0', textAlign: 'center', color: '#475569', fontFamily: 'JetBrains Mono, monospace', fontSize: '0.82rem' }}>
+            {initialPosts.length === 0 ? "Aucun writeup pour le moment — bientôt." : 'Aucun résultat.'}
+          </div>
         ) : (
-          <div className="grid md:grid-cols-2 gap-6">
-            {filtered.map((post, i) => (
-              <PostCard key={post.slug} post={post} type="writeups" index={i} />
-            ))}
+          <div>
+            {filtered.map((post, i) => <PostCard key={post.slug} post={post} type="writeups" index={i} />)}
           </div>
         )}
+
       </div>
     </div>
   );

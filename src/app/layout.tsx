@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "katex/dist/katex.min.css";
 import Navbar from "@/components/Navbar";
 import RainCanvas from "@/components/RainCanvas";
 
@@ -17,62 +18,79 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+const FOOTER_LINKS = [
+  { label: 'GitHub',     href: 'https://github.com/D0pp3lgang3r' },
+  { label: 'Root-Me',    href: 'https://www.root-me.org/D0pp3lgang3r' },
+  { label: 'CryptoHack', href: 'https://cryptohack.org/user/D0pp3lgang3r/' },
+  { label: 'YesWeHack',  href: 'https://yeswehack.com/hunters/D0pp3lgang3r' },
+];
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className="antialiased min-h-screen">
+      <body style={{ margin: 0, padding: 0 }}>
         {/* Amegakure background */}
         <div className="ame-bg" aria-hidden="true" />
         <div className="ame-overlay" aria-hidden="true" />
 
-        {/* Rain canvas overlay */}
+        {/* Rain canvas */}
         <RainCanvas />
 
         {/* Navigation */}
         <Navbar />
 
         {/* Page content */}
-        <main className="relative z-10">
+        <main style={{ position: 'relative', zIndex: 10 }}>
           {children}
         </main>
 
         {/* Footer */}
-        <footer className="relative z-10 border-t border-ame-purple/15 mt-24 py-8">
-          <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2 text-ame-muted text-xs font-mono">
-              <span className="text-ame-purple">雨隠れの里</span>
-              <span>—</span>
-              <span>Hidden Rain Village</span>
-            </div>
-            <div className="flex items-center gap-6">
-              {[
-                { label: 'GitHub',     href: 'https://github.com/D0pp3lgang3r' },
-                { label: 'Root-Me',    href: 'https://www.root-me.org/D0pp3lgang3r' },
-                { label: 'CryptoHack', href: 'https://cryptohack.org/user/D0pp3lgang3r/' },
-                { label: 'YesWeHack', href: 'https://yeswehack.com/hunters/D0pp3lgang3r' },
-              ].map(link => (
+        <footer
+          style={{
+            position: 'relative',
+            zIndex: 10,
+            borderTop: '1px solid rgba(124,58,237,0.12)',
+            marginTop: 80,
+            padding: '28px 0',
+          }}
+        >
+          <div
+            style={{
+              maxWidth: 1100,
+              margin: '0 auto',
+              padding: '0 28px',
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: 16,
+            }}
+          >
+            <span style={{ fontFamily: "'Noto Sans JP', sans-serif", fontSize: '0.75rem', color: '#4c1d95' }}>
+              雨隠れの里 — Hidden Rain Village
+            </span>
+
+            <div style={{ display: 'flex', gap: 28, flexWrap: 'wrap' }}>
+              {FOOTER_LINKS.map(link => (
                 <a
                   key={link.href}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-ame-muted hover:text-ame-rain text-xs font-mono transition-colors duration-200"
+                  className="footer-link"
                 >
                   {link.label}
                 </a>
               ))}
             </div>
-            <p className="text-ame-muted/50 text-xs font-mono">
+
+            <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.68rem', color: '#2d3748' }}>
               © {new Date().getFullYear()} D0pp3lgang3r
-            </p>
+            </span>
           </div>
         </footer>
       </body>

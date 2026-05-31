@@ -1,168 +1,175 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef, useCallback } from 'react';
 
-const JP_CHARS = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンあいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん零一二三四五六七八九十';
+const JP = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン零一二三四五六七八九';
 
-function useJapaneseDecoder(text: string) {
-  const [displayed, setDisplayed] = useState(text);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const frameRef = useRef(0);
+function JpDecoder({ text, active }: { text: string; active: boolean }) {
+  const [display, setDisplay] = useState(text);
+  const timer = useRef<ReturnType<typeof setInterval> | null>(null);
+  const frame = useRef(0);
 
   const start = useCallback(() => {
-    frameRef.current = 0;
-    const maxFrames = text.length * 4;
-
-    intervalRef.current = setInterval(() => {
-      frameRef.current += 1;
-      const decoded = Math.floor(frameRef.current / 4);
-
-      setDisplayed(
-        text
-          .split('')
-          .map((char, i) => {
-            if (i < decoded) return char;
-            return JP_CHARS[Math.floor(Math.random() * JP_CHARS.length)];
-          })
-          .join('')
-      );
-
-      if (frameRef.current >= maxFrames) {
-        clearInterval(intervalRef.current!);
-        setDisplayed(text);
-      }
-    }, 40);
+    frame.current = 0;
+    if (timer.current) clearInterval(timer.current);
+    timer.current = setInterval(() => {
+      frame.current++;
+      const locked = Math.floor(frame.current / 3);
+      setDisplay(text.split('').map((c, i) =>
+        i < locked ? c : JP[Math.floor(Math.random() * JP.length)]
+      ).join(''));
+      if (locked >= text.length) { clearInterval(timer.current!); setDisplay(text); }
+    }, 35);
   }, [text]);
 
   const stop = useCallback(() => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    setDisplayed(text);
+    if (timer.current) clearInterval(timer.current);
+    setDisplay(text);
   }, [text]);
 
-  useEffect(() => () => { if (intervalRef.current) clearInterval(intervalRef.current); }, []);
-
-  return { displayed, start, stop };
-}
-
-interface NavItemProps {
-  href: string;
-  label: string;
-  active: boolean;
-}
-
-function NavItem({ href, label, active }: NavItemProps) {
-  const { displayed, start, stop } = useJapaneseDecoder(label);
+  useEffect(() => () => { if (timer.current) clearInterval(timer.current); }, []);
 
   return (
-    <Link
-      href={href}
-      className={`nav-link font-jp${active ? ' active' : ''}`}
+    <span
       onMouseEnter={start}
       onMouseLeave={stop}
-      style={{ fontFamily: 'Orbitron, monospace', minWidth: `${label.length}ch` }}
+      style={{
+        display: 'inline-block',
+        fontFamily: 'Orbitron, monospace',
+        fontSize: '0.68rem',
+        fontWeight: 600,
+        letterSpacing: '0.14em',
+        textTransform: 'uppercase' as const,
+        color: active ? '#a78bfa' : '#475569',
+        textDecoration: 'none',
+        cursor: 'pointer',
+        transition: 'color 0.2s',
+        minWidth: `${text.length}ch`,
+        position: 'relative' as const,
+        paddingBottom: 4,
+        borderBottom: active ? '1px solid #7c3aed' : '1px solid transparent',
+      }}
     >
-      {displayed}
-    </Link>
+      {display}
+    </span>
   );
 }
 
-const NAV_LINKS = [
-  { href: '/',         label: 'HOME' },
-  { href: '/skills',   label: 'SKILLS' },
+const LINKS = [
+  { href: '/skills',   label: 'SKILLS'   },
   { href: '/articles', label: 'ARTICLES' },
   { href: '/writeups', label: 'WRITEUPS' },
-  { href: '/contact',  label: 'CONTACT' },
+  { href: '/contact',  label: 'CONTACT'  },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen]         = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    const fn = () => setScrolled(window.scrollY > 24);
+    window.addEventListener('scroll', fn, { passive: true });
+    return () => window.removeEventListener('scroll', fn);
   }, []);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-ame-black/90 backdrop-blur-md border-b border-ame-purple/20 py-3'
-          : 'bg-transparent py-5'
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+    <header style={{
+      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
+      background: scrolled ? 'rgba(5,5,8,0.92)' : 'transparent',
+      backdropFilter: scrolled ? 'blur(14px)' : 'none',
+      borderBottom: scrolled ? '1px solid rgba(124,58,237,0.15)' : 'none',
+      transition: 'background 0.3s, border-color 0.3s',
+    }}>
+      {/* Main bar */}
+      <div style={{
+        maxWidth: 1100, margin: '0 auto',
+        padding: '14px 28px',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      }}>
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-8 h-8">
-            <div className="absolute inset-0 rounded-full border-2 border-ame-purple/60 group-hover:border-ame-rain transition-colors duration-300" />
-            <div className="absolute inset-1 rounded-full bg-ame-purple/20 group-hover:bg-ame-purple/35 transition-colors duration-300" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-ame-rain font-orbitron font-bold text-xs">雨</span>
+        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
+          {/* Profile picture ring */}
+          <div style={{
+            position: 'relative', width: 34, height: 34, flexShrink: 0,
+          }}>
+            <div style={{
+              position: 'absolute', inset: -2, borderRadius: '50%',
+              background: 'conic-gradient(from 0deg, #7c3aed, #a78bfa, #06b6d4, #7c3aed)',
+              animation: 'spin-slow 8s linear infinite',
+            }} />
+            <div style={{ position: 'absolute', inset: 1, borderRadius: '50%', overflow: 'hidden' }}>
+              <Image
+                src="/images/doppel.jpeg"
+                alt="D0pp3lgang3r"
+                fill
+                style={{ objectFit: 'cover' }}
+                priority
+              />
             </div>
           </div>
-          <span
-            className="font-orbitron font-bold text-sm tracking-widest text-ame-text group-hover:text-ame-rain transition-colors"
-            style={{ fontFamily: 'Orbitron, monospace' }}
-          >
-            D0PP3LGANG3R
+          <span style={{
+            fontFamily: 'Orbitron, monospace', fontSize: '0.75rem', fontWeight: 700,
+            letterSpacing: '0.14em', color: '#e2e8f0', textTransform: 'uppercase', whiteSpace: 'nowrap',
+          }}>
+            D0pp3lgang3r
           </span>
         </Link>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
-          {NAV_LINKS.filter(l => l.href !== '/').map(link => (
-            <NavItem
-              key={link.href}
-              href={link.href}
-              label={link.label}
-              active={pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href))}
-            />
-          ))}
-        </div>
+        {/* Desktop nav — hidden on small screens via CSS class */}
+        <nav className="nav-desktop" style={{ display: 'flex', alignItems: 'center', gap: 40 }}>
+          {LINKS.map(l => {
+            const active = pathname === l.href || pathname.startsWith(l.href + '/');
+            return (
+              <Link key={l.href} href={l.href} style={{ textDecoration: 'none' }}>
+                <JpDecoder text={l.label} active={active} />
+              </Link>
+            );
+          })}
+        </nav>
 
-        {/* Mobile burger */}
+        {/* Mobile burger — hidden on desktop via CSS */}
         <button
-          className="md:hidden flex flex-col gap-1.5 p-2"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+          className="nav-burger"
+          onClick={() => setOpen(o => !o)}
+          aria-label="Menu"
+          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 6, display: 'flex', flexDirection: 'column', gap: 5 }}
         >
-          {[0, 1, 2].map(i => (
-            <span
-              key={i}
-              className={`block h-px bg-ame-rain transition-all duration-300 ${
-                i === 0 ? (menuOpen ? 'w-6 translate-y-2.5 rotate-45' : 'w-6') :
-                i === 1 ? (menuOpen ? 'w-0 opacity-0' : 'w-4') :
-                (menuOpen ? 'w-6 -translate-y-2.5 -rotate-45' : 'w-5')
-              }`}
-            />
+          {[20, open ? 0 : 14, 20].map((w, i) => (
+            <span key={i} style={{
+              display: 'block', height: 1, background: '#a78bfa', width: w,
+              transition: 'all 0.25s',
+              ...(open && i === 0 ? { transform: 'rotate(45deg) translateY(6px)', width: 20 } : {}),
+              ...(open && i === 2 ? { transform: 'rotate(-45deg) translateY(-6px)', width: 20 } : {}),
+            }} />
           ))}
         </button>
       </div>
 
-      {/* Mobile menu */}
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
-          menuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className="bg-ame-void/95 backdrop-blur-lg border-t border-ame-purple/20 px-6 py-4 flex flex-col gap-5">
-          {NAV_LINKS.filter(l => l.href !== '/').map(link => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`nav-link text-sm ${pathname === link.href ? 'active' : ''}`}
-              onClick={() => setMenuOpen(false)}
+      {/* Mobile dropdown */}
+      <div style={{
+        overflow: 'hidden', maxHeight: open ? 220 : 0, opacity: open ? 1 : 0,
+        transition: 'max-height 0.3s, opacity 0.3s',
+        background: 'rgba(5,5,8,0.96)',
+        borderTop: open ? '1px solid rgba(124,58,237,0.14)' : 'none',
+      }}>
+        <div style={{ padding: '16px 28px', display: 'flex', flexDirection: 'column', gap: 20 }}>
+          {LINKS.map(l => (
+            <Link key={l.href} href={l.href} onClick={() => setOpen(false)}
+              style={{
+                fontFamily: 'Orbitron, monospace', fontSize: '0.7rem', fontWeight: 600,
+                letterSpacing: '0.14em', textTransform: 'uppercase', textDecoration: 'none',
+                color: pathname === l.href ? '#a78bfa' : '#475569',
+              }}
             >
-              {link.label}
+              {l.label}
             </Link>
           ))}
         </div>
       </div>
-    </nav>
+    </header>
   );
 }
