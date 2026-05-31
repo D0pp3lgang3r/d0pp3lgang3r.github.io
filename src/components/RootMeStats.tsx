@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 interface Category {
@@ -11,17 +10,17 @@ interface Category {
 }
 
 const CATEGORIES: Category[] = [
-  { name: 'App - Script',     logo: '/images/rootmelogos/app_script.svg',   pct: 88,  color: '#7c3aed' },
-  { name: 'PWN',              logo: '/images/rootmelogos/pwn.svg',           pct: 72,  color: '#7c3aed' },
-  { name: 'Cracking',         logo: '/images/rootmelogos/cracking.svg',      pct: 100, color: '#10b981' },
+  { name: 'App - Script',     logo: '/images/rootmelogos/app_script.svg',   pct: 100,  color: '#10b981' },
+  { name: 'PWN',              logo: '/images/rootmelogos/pwn.svg',           pct: 45,  color: '#f59e0b' },
+  { name: 'Cracking',         logo: '/images/rootmelogos/cracking.svg',      pct: 98, color: '#7c3aed' },
   { name: 'Cryptanalyse',     logo: '/images/rootmelogos/cryptography.svg',  pct: 100, color: '#10b981' },
-  { name: 'Forensic',         logo: '/images/rootmelogos/forensic.svg',      pct: 100, color: '#10b981' },
-  { name: 'Programmation',    logo: '/images/rootmelogos/programmation.svg', pct: 98,  color: '#7c3aed' },
+  { name: 'Forensic',         logo: '/images/rootmelogos/forensic.svg',      pct: 89, color: '#7c3aed' },
+  { name: 'Programmation',    logo: '/images/rootmelogos/programmation.svg', pct: 72,  color: '#7c3aed' },
   { name: 'Pentest / Réaliste',logo: '/images/rootmelogos/pentest.svg',      pct: 95,  color: '#7c3aed' },
   { name: 'Réseau',           logo: '/images/rootmelogos/network.svg',       pct: 94,  color: '#7c3aed' },
   { name: 'Stéganographie',   logo: '/images/rootmelogos/steganography.svg', pct: 100, color: '#10b981' },
-  { name: 'Web - Client',     logo: '/images/rootmelogos/web_client.svg',    pct: 45,  color: '#f59e0b' },
-  { name: 'Web - Serveur',    logo: '/images/rootmelogos/web_server.svg',    pct: 89,  color: '#7c3aed' },
+  { name: 'Web - Client',     logo: '/images/rootmelogos/web_client.svg',    pct: 88,  color: '#7c3aed' },
+  { name: 'Web - Serveur',    logo: '/images/rootmelogos/web_server.svg',    pct: 100,  color: '#10b981' },
 ];
 
 const BOTTOM_STATS = [
@@ -37,6 +36,7 @@ export default function RootMeStats() {
       background: 'rgba(8, 6, 18, 0.92)',
       border: '1px solid rgba(124,58,237,0.25)',
       backdropFilter: 'blur(12px)',
+      borderRadius: 12,
       overflow: 'hidden',
     }}>
       {/* Header */}
@@ -76,12 +76,13 @@ export default function RootMeStats() {
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               opacity: 0.85,
             }}>
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src={cat.logo}
                 alt={cat.name}
                 width={20}
                 height={20}
-                style={{ filter: 'brightness(0) saturate(100%) invert(60%) sepia(20%) saturate(300%) hue-rotate(230deg)' }}
+                style={{ display: 'block' }}
               />
             </div>
 

@@ -9,8 +9,7 @@ export default function ArticlesClient({ initialPosts }: { initialPosts: PostMet
   const [filter,    setFilter]    = useState('');
   const [activeTag, setActiveTag] = useState<string | null>(null);
 
-  const allTags = Array.from(new Set(initialPosts.flatMap(p => p.tags)));
-
+  const allTags  = Array.from(new Set(initialPosts.flatMap(p => p.tags)));
   const filtered = initialPosts.filter(p => {
     const matchText = !filter ||
       p.title.toLowerCase().includes(filter.toLowerCase()) ||
@@ -25,116 +24,96 @@ export default function ArticlesClient({ initialPosts }: { initialPosts: PostMet
 
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-          <div style={{ marginBottom: 48 }}>
-            <p style={{ fontFamily: "'Noto Sans JP', sans-serif", fontSize: '0.7rem', color: '#475569', letterSpacing: '0.2em', marginBottom: 12 }}>
-              記事 / ARTICLES
-            </p>
-            <h1 style={{ fontFamily: 'Orbitron, monospace', fontSize: 'clamp(1.8rem, 5vw, 2.8rem)', fontWeight: 900, color: '#e2e8f0', marginBottom: 12 }}>
-              ARTICLES
-            </h1>
-            <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.82rem', color: '#64748b', maxWidth: 520 }}>
-              Écrits techniques — cryptographie, sécurité réseau, mathématiques.
+          <div style={{ marginBottom: 36 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
+              {/* accent bar */}
+              <div style={{ width: 3, height: 36, background: 'linear-gradient(180deg,#7c3aed,#a78bfa)', borderRadius: 2 }} />
+              <div>
+                <p style={{ fontFamily: "'Noto Sans JP', sans-serif", fontSize: '0.68rem', color: '#475569', letterSpacing: '0.2em', marginBottom: 4 }}>
+                  記事 / ARTICLES
+                </p>
+                <h1 style={{ fontFamily: 'Orbitron, monospace', fontSize: 'clamp(1.6rem, 4vw, 2.4rem)', fontWeight: 900, color: '#e2e8f0' }}>
+                  ARTICLES
+                </h1>
+              </div>
+            </div>
+            <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.82rem', color: '#64748b', maxWidth: 560, marginLeft: 15 }}>
+              Écrits techniques — cryptographie, mathématiques, sécurité réseau.
+              Des explications approfondies, pas des solutions de challenges.
             </p>
           </div>
         </motion.div>
 
-        {/* Search + filters */}
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
-          <div style={{ marginBottom: 32, display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <input
-            type="text"
-            placeholder="Rechercher..."
-            value={filter}
-            onChange={e => setFilter(e.target.value)}
-            style={{
-              background: 'rgba(10,10,18,0.6)',
-              border: '1px solid rgba(124,58,237,0.2)',
-              outline: 'none',
-              color: '#e2e8f0',
-              fontFamily: 'JetBrains Mono, monospace',
-              fontSize: '0.8rem',
-              padding: '8px 14px',
-              maxWidth: 320,
-              transition: 'border-color 0.2s',
-            }}
-            onFocus={e => (e.target.style.borderColor = 'rgba(124,58,237,0.5)')}
-            onBlur={e => (e.target.style.borderColor = 'rgba(124,58,237,0.2)')}
-          />
-
-          {allTags.length > 0 && (
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-              <button
-                onClick={() => setActiveTag(null)}
-                className="tag"
-                style={{
-                  background: !activeTag ? 'rgba(124,58,237,0.18)' : undefined,
-                  borderColor: !activeTag ? 'rgba(167,139,250,0.5)' : undefined,
-                  color: !activeTag ? '#c4b5fd' : undefined,
-                  cursor: 'pointer',
-                }}
+        {/* Search */}
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }}>
+          <div style={{ marginBottom: 28 }}>
+            {/* Search bar */}
+            <div style={{ position: 'relative', maxWidth: 600, marginBottom: 14 }}>
+              <svg
+                viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#475569" strokeWidth="2"
+                style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}
               >
-                ALL
-              </button>
-              {allTags.map(tag => (
-                <button
-                  key={tag}
-                  onClick={() => setActiveTag(activeTag === tag ? null : tag)}
-                  className="tag"
-                  style={{
-                    background: activeTag === tag ? 'rgba(124,58,237,0.18)' : undefined,
-                    borderColor: activeTag === tag ? 'rgba(167,139,250,0.5)' : undefined,
-                    color: activeTag === tag ? '#c4b5fd' : undefined,
-                    cursor: 'pointer',
-                  }}
-                >
-                  {tag}
-                </button>
-              ))}
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+              <input
+                type="text"
+                placeholder="Rechercher un article..."
+                value={filter}
+                onChange={e => setFilter(e.target.value)}
+                style={{
+                  width: '100%',
+                  background: 'rgba(10,10,18,0.75)',
+                  border: '1px solid rgba(124,58,237,0.25)',
+                  borderRadius: 10,
+                  outline: 'none',
+                  color: '#e2e8f0',
+                  fontFamily: 'JetBrains Mono, monospace',
+                  fontSize: '0.88rem',
+                  padding: '12px 16px 12px 44px',
+                  transition: 'border-color 0.2s, box-shadow 0.2s',
+                }}
+                onFocus={e => {
+                  e.target.style.borderColor = 'rgba(124,58,237,0.6)';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(124,58,237,0.08)';
+                }}
+                onBlur={e => {
+                  e.target.style.borderColor = 'rgba(124,58,237,0.25)';
+                  e.target.style.boxShadow = 'none';
+                }}
+              />
             </div>
-          )}
+
+            {/* Tags */}
+            {allTags.length > 0 && (
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                <button onClick={() => setActiveTag(null)} className="tag" style={{ cursor: 'pointer', background: !activeTag ? 'rgba(124,58,237,0.18)' : undefined, borderColor: !activeTag ? 'rgba(167,139,250,0.5)' : undefined, color: !activeTag ? '#c4b5fd' : undefined }}>
+                  Tous
+                </button>
+                {allTags.map(tag => (
+                  <button key={tag} onClick={() => setActiveTag(activeTag === tag ? null : tag)} className="tag" style={{ cursor: 'pointer', background: activeTag === tag ? 'rgba(124,58,237,0.18)' : undefined, borderColor: activeTag === tag ? 'rgba(167,139,250,0.5)' : undefined, color: activeTag === tag ? '#c4b5fd' : undefined }}>
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </motion.div>
 
         {/* Column header */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '7rem 1fr auto',
-            gap: '1.5rem',
-            padding: '6px 0 10px',
-            borderBottom: '1px solid rgba(124,58,237,0.22)',
-            marginBottom: 0,
-          }}
-        >
+        <div style={{ display: 'grid', gridTemplateColumns: '7rem 1fr auto', gap: '1.5rem', padding: '6px 0 10px', borderBottom: '1px solid rgba(124,58,237,0.2)' }}>
           {['DATE', 'TITRE', 'TAGS'].map(h => (
-            <span
-              key={h}
-              style={{
-                fontFamily: 'Orbitron, monospace',
-                fontSize: '0.6rem',
-                color: '#4c1d95',
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-              }}
-            >
+            <span key={h} style={{ fontFamily: 'Orbitron, monospace', fontSize: '0.58rem', color: '#4c1d95', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
               {h}
             </span>
           ))}
         </div>
 
-        {/* List */}
         {filtered.length === 0 ? (
           <div style={{ padding: '48px 0', textAlign: 'center', color: '#475569', fontFamily: 'JetBrains Mono, monospace', fontSize: '0.82rem' }}>
-            {initialPosts.length === 0
-              ? 'Aucun article pour le moment — bientôt.'
-              : 'Aucun résultat.'}
+            {initialPosts.length === 0 ? "Aucun article pour le moment — bientôt." : 'Aucun résultat.'}
           </div>
         ) : (
-          <div>
-            {filtered.map((post, i) => (
-              <PostCard key={post.slug} post={post} type="articles" index={i} />
-            ))}
-          </div>
+          <div>{filtered.map((post, i) => <PostCard key={post.slug} post={post} type="articles" index={i} />)}</div>
         )}
 
       </div>

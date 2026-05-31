@@ -149,6 +149,7 @@ body {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(124, 58, 237, 0.18);
+  border-radius: 12px;
   transition: border-color 0.25s, box-shadow 0.25s;
 }
 .panel:hover {
@@ -160,7 +161,7 @@ body {
 .tag {
   display: inline-flex;
   align-items: center;
-  padding: 1px 8px;
+  padding: 2px 9px;
   font-size: 0.6rem;
   font-family: 'JetBrains Mono', monospace;
   letter-spacing: 0.08em;
@@ -168,6 +169,7 @@ body {
   border: 1px solid rgba(124, 58, 237, 0.35);
   color: var(--rain);
   background: rgba(124, 58, 237, 0.07);
+  border-radius: 6px;
   white-space: nowrap;
 }
 .tag-cyber {
@@ -235,6 +237,7 @@ body {
   }
 }
 .post-row:hover { background: rgba(124, 58, 237, 0.04); }
+.post-row:hover .post-row-title { color: #a78bfa; }
 .post-row-date { color: var(--muted); font-size: 0.7rem; white-space: nowrap; }
 .post-row-title {
   color: var(--text);
@@ -263,6 +266,7 @@ body {
 .terminal {
   background: rgba(5, 5, 8, 0.92);
   border: 1px solid rgba(124, 58, 237, 0.22);
+  border-radius: 12px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.8rem;
   line-height: 1.6;
