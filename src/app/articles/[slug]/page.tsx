@@ -6,6 +6,8 @@ interface Props {
   params: { slug: string };
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return getAllPosts('articles').map(p => ({ slug: p.slug }));
 }
