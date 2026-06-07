@@ -37,8 +37,7 @@ export default function ArticlesClient({ initialPosts }: { initialPosts: PostMet
               </div>
             </div>
             <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.82rem', color: '#64748b', maxWidth: 560, marginLeft: 20 }}>
-              Écrits techniques — cryptographie, mathématiques, sécurité réseau.
-              Des explications approfondies, pas des solutions de challenges.
+              Some articles about Malware analysis and hacking in general...
             </p>
           </div>
         </motion.div>
@@ -55,7 +54,7 @@ export default function ArticlesClient({ initialPosts }: { initialPosts: PostMet
               </svg>
               <input
                 type="text"
-                placeholder="Rechercher un article..."
+                placeholder="Search for an article..."
                 value={filter}
                 onChange={e => setFilter(e.target.value)}
                 style={{
@@ -84,7 +83,7 @@ export default function ArticlesClient({ initialPosts }: { initialPosts: PostMet
             {allTags.length > 0 && (
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                 <button onClick={() => setActiveTag(null)} className="tag" style={{ cursor: 'pointer', background: !activeTag ? 'rgba(124,58,237,0.18)' : undefined, borderColor: !activeTag ? 'rgba(167,139,250,0.5)' : undefined, color: !activeTag ? '#c4b5fd' : undefined }}>
-                  Tous
+                  All
                 </button>
                 {allTags.map(tag => (
                   <button key={tag} onClick={() => setActiveTag(activeTag === tag ? null : tag)} className="tag" style={{ cursor: 'pointer', background: activeTag === tag ? 'rgba(124,58,237,0.18)' : undefined, borderColor: activeTag === tag ? 'rgba(167,139,250,0.5)' : undefined, color: activeTag === tag ? '#c4b5fd' : undefined }}>
@@ -99,7 +98,7 @@ export default function ArticlesClient({ initialPosts }: { initialPosts: PostMet
         {/* Grid */}
         {filtered.length === 0 ? (
           <div style={{ padding: '64px 0', textAlign: 'center', color: '#475569', fontFamily: 'JetBrains Mono, monospace', fontSize: '0.82rem' }}>
-            {initialPosts.length === 0 ? 'Aucun article pour le moment — bientôt.' : 'Aucun résultat.'}
+            {initialPosts.length === 0 ? 'No articles available at the moment — coming soon.' : 'No results found.'}
           </div>
         ) : (
           <div style={{

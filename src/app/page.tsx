@@ -78,7 +78,7 @@ export default function Home() {
 
               <motion.div variants={fade}>
                 <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.86rem', color: '#64748b', marginBottom: 5, maxWidth: 480 }}>
-                  <span style={{ color: '#06b6d4' }}>$</span>&nbsp;French Polytech student — hacking stuff for fun.
+                  <span style={{ color: '#06b6d4' }}>$</span>&nbsp;French cybersecurity-enthusiast.
                 </p>
                 <p className="cursor" style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.74rem', color: '#475569', marginBottom: 28 }}>
                   Malware Analysis · CTF · Bug Bounty

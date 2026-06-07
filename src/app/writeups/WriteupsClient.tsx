@@ -50,7 +50,7 @@ export default function WriteupsClient({ initialPosts }: { initialPosts: PostMet
               </div>
             </div>
             <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.82rem', color: '#64748b', maxWidth: 560, marginLeft: 20 }}>
-              Solutions de quelques challenges de CTF...
+              Some solutions to CTFs challenges...
             </p>
           </div>
         </motion.div>
@@ -65,7 +65,7 @@ export default function WriteupsClient({ initialPosts }: { initialPosts: PostMet
               </svg>
               <input
                 type="text"
-                placeholder="Rechercher un writeup, challenge, plateforme..."
+                placeholder="Search for a writeup, challenge, or platform..."
                 value={filter}
                 onChange={e => setFilter(e.target.value)}
                 style={{
@@ -94,7 +94,7 @@ export default function WriteupsClient({ initialPosts }: { initialPosts: PostMet
             {allTags.length > 0 && (
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                 <button onClick={() => setActiveTag(null)} className="tag" style={{ cursor: 'pointer', borderColor: !activeTag ? 'rgba(239,68,68,0.5)' : 'rgba(239,68,68,0.2)', color: !activeTag ? '#fca5a5' : '#64748b', background: !activeTag ? 'rgba(239,68,68,0.1)' : undefined }}>
-                  Tous
+                  All
                 </button>
                 {allTags.map(tag => (
                   <button key={tag} onClick={() => setActiveTag(activeTag === tag ? null : tag)} className="tag" style={{ cursor: 'pointer', borderColor: activeTag === tag ? 'rgba(239,68,68,0.5)' : 'rgba(239,68,68,0.2)', color: activeTag === tag ? '#fca5a5' : '#64748b', background: activeTag === tag ? 'rgba(239,68,68,0.1)' : undefined }}>
@@ -109,7 +109,7 @@ export default function WriteupsClient({ initialPosts }: { initialPosts: PostMet
         {/* Grid */}
         {filtered.length === 0 ? (
           <div style={{ padding: '64px 0', textAlign: 'center', color: '#475569', fontFamily: 'JetBrains Mono, monospace', fontSize: '0.82rem' }}>
-            {initialPosts.length === 0 ? 'Aucun writeup pour le moment — bientôt.' : 'Aucun résultat.'}
+            {initialPosts.length === 0 ? 'No writeups available at the moment — coming soon.' : 'No results found.'}
           </div>
         ) : (
           <div style={{
