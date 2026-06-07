@@ -90,7 +90,7 @@ export default function Home() {
                   {[
                     { href: '/writeups', label: 'WRITEUPS', primary: true  },
                     { href: '/articles', label: 'ARTICLES', primary: false },
-                    { href: '/skills',   label: 'SKILLS',   primary: false },
+                    { href: '/whoami',   label: 'WHOAMI',   primary: false },
                   ].map(btn => (
                     <Link key={btn.href} href={btn.href} style={{
                       fontFamily: 'Orbitron, monospace', fontSize: '0.65rem', fontWeight: 700,
@@ -205,7 +205,7 @@ export default function Home() {
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 10 }}>
             {[
-              { href: '/skills',   en: 'SKILLS',   jp: 'スキル',  desc: 'Stack & expertise'  },
+              { href: '/whoami',   en: 'WHOAMI',   jp: '素性',    desc: 'About me'           },
               { href: '/articles', en: 'ARTICLES',  jp: '記事',   desc: 'Technical writings' },
               { href: '/writeups', en: 'WRITEUPS',  jp: '解答',   desc: 'CTF solutions'       },
               { href: '/contact',  en: 'CONTACT',   jp: '連絡先', desc: 'Get in touch'        },
