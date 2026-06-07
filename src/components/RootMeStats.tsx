@@ -92,7 +92,7 @@ export default function RootMeStats() {
             {/* Bar */}
             <div style={{ flex: 1, height: 4, background: 'rgba(124,58,237,0.12)', borderRadius: 2, overflow: 'hidden' }}>
               <motion.div
-                style={{ height: '100%', borderRadius: 2, background: cat.color }}
+                style={{ height: '100%', borderRadius: 2, background: cat.color } as React.CSSProperties}
                 initial={{ width: 0 }}
                 whileInView={{ width: `${cat.pct}%` }}
                 viewport={{ once: true }}
@@ -104,8 +104,7 @@ export default function RootMeStats() {
       </div>
 
       {/* Bottom stats */}
-      <div style={{
-        display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
+      <div className="rootme-bottom-stats" style={{
         borderTop: '1px solid rgba(124,58,237,0.15)',
         background: 'rgba(124,58,237,0.06)',
       }}>

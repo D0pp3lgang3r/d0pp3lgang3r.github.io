@@ -47,18 +47,11 @@ const STATS = [
 export default function Home() {
   return (
     <div style={{ paddingBottom: 80 }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 28px' }}>
+      <div className="page-container">
 
         {/* ── Hero ─────────────────────────────────────────────── */}
         <motion.div initial="hidden" animate="show" variants={stagger}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr auto',
-            alignItems: 'center',
-            gap: 48,
-            paddingTop: 72,
-            paddingBottom: 48,
-          }}>
+          <div className="hero-grid">
             {/* Left */}
             <div>
               <motion.div variants={fade}>
@@ -116,7 +109,7 @@ export default function Home() {
             </div>
 
             {/* Right: avatar */}
-            <motion.div variants={fade}>
+            <motion.div variants={fade} className="hero-avatar">
               <div style={{ position: 'relative', width: 190, height: 190, flexShrink: 0 }}>
                 <div style={{
                   position: 'absolute', inset: -3, borderRadius: '50%',
@@ -135,7 +128,7 @@ export default function Home() {
         {/* ── Stats strip ───────────────────────────────────────── */}
         <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
           <div style={{ marginBottom: 48 }}>
-            <div className="panel" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
+            <div className="panel stats-grid">
               {STATS.map((s, i) => (
                 <div key={s.label} style={{
                   padding: '18px 16px', textAlign: 'center',
@@ -158,7 +151,7 @@ export default function Home() {
 
         {/* ── Profils + Root-Me ─────────────────────────────────── */}
         <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
-          <div style={{ marginBottom: 48, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, alignItems: 'start' }}>
+          <div className="profiles-grid" style={{ marginBottom: 48 }}>
 
             {/* Platform cards */}
             <div>

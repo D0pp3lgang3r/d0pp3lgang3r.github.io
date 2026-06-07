@@ -80,8 +80,8 @@ export default function PostLayout({ post, type }: PostLayoutProps) {
   const style     = btnStyle(t);
 
   return (
-    <div style={{ minHeight: '100vh', paddingTop: '10rem', paddingBottom: '5rem' }}>
-      <div className="max-w-3xl mx-auto px-6">
+    <div className="post-page-top">
+      <div className="post-content-wrap">
 
         {/* Back — top */}
         <div style={{ marginBottom: '3rem' }}>

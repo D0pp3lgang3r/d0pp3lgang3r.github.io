@@ -20,7 +20,7 @@ export default function ArticlesClient({ initialPosts }: { initialPosts: PostMet
 
   return (
     <div style={{ minHeight: '100vh', paddingTop: 72, paddingBottom: 80 }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 28px' }}>
+      <div className="page-container">
 
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>

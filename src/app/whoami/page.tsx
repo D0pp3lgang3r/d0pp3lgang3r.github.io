@@ -24,7 +24,7 @@ const ACHIEVEMENTS = [
 export default function WhoamiPage() {
   return (
     <div style={{ minHeight: '100vh', paddingTop: 72, paddingBottom: 80 }}>
-      <div style={{ maxWidth: 700, margin: '0 auto', padding: '0 28px' }}>
+      <div className="narrow-container">
 
         {/* Header */}
         <motion.div {...fade(0)}>
