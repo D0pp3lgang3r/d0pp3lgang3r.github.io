@@ -46,15 +46,9 @@ export default function RootMeStats() {
         borderBottom: '1px solid rgba(124,58,237,0.15)',
         background: 'rgba(124,58,237,0.08)',
       }}>
-        <div style={{
-          width: 28, height: 28, borderRadius: 4,
-          background: '#ef4444',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          flexShrink: 0,
-        }}>
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="white">
-            <path d="M12 2L3 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4z"/>
-          </svg>
+        <div style={{ width: 28, height: 28, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/rootmelogo.svg" alt="Root-Me" width={28} height={28} style={{ display: 'block' }} />
         </div>
         <div>
           <div style={{ fontFamily: 'Orbitron, monospace', fontSize: '0.72rem', fontWeight: 700, color: '#e2e8f0', letterSpacing: '0.08em' }}>

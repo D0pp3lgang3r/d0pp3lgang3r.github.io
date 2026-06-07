@@ -35,21 +35,26 @@ export function getAllPosts(type: 'articles' | 'writeups'): PostMeta[] {
   const files = fs.readdirSync(dir).filter(f => f.endsWith('.md'));
 
   return files
-    .map(filename => {
-      const slug = slugFromFile(filename);
-      const raw = fs.readFileSync(path.join(dir, filename), 'utf-8');
-      const { data, content } = matter(raw);
-      const rt = readingTime(content);
+    .flatMap(filename => {
+      try {
+        const slug = slugFromFile(filename);
+        const raw = fs.readFileSync(path.join(dir, filename), 'utf-8');
+        const { data, content } = matter(raw);
+        const rt = readingTime(content);
 
-      return {
-        slug,
-        title:       data.title ?? slug,
-        date:        data.date ?? '',
-        description: data.description ?? '',
-        tags:        Array.isArray(data.tags) ? data.tags : [],
-        readingTime: rt.text,
-        coverImage:  data.coverImage ?? undefined,
-      } satisfies PostMeta;
+        return [{
+          slug,
+          title:       data.title ?? slug,
+          date:        data.date ?? '',
+          description: data.description ?? '',
+          tags:        Array.isArray(data.tags) ? data.tags : [],
+          readingTime: rt.text,
+          coverImage:  data.coverImage ?? undefined,
+        } satisfies PostMeta];
+      } catch (err) {
+        console.error(`[markdown] Failed to parse ${filename}:`, err);
+        return [];
+      }
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
@@ -59,8 +64,16 @@ export function getPost(type: 'articles' | 'writeups', slug: string): Post | nul
 
   if (!fs.existsSync(filepath)) return null;
 
-  const raw = fs.readFileSync(filepath, 'utf-8');
-  const { data, content } = matter(raw);
+  let raw: string;
+  let data: Record<string, unknown>;
+  let content: string;
+  try {
+    raw = fs.readFileSync(filepath, 'utf-8');
+    ({ data, content } = matter(raw));
+  } catch (err) {
+    console.error(`[markdown] getPost failed for ${slug}:`, err);
+    return null;
+  }
   const rt = readingTime(content);
 
   return {

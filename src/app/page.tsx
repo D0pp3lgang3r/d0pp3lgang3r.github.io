@@ -32,7 +32,7 @@ const BugIcon = () => (
 
 const PLATFORMS = [
   { name: 'GitHub',     stat: '12 repos',            color: '#e2e8f0', url: 'https://github.com/D0pp3lgang3r',                    icon: <GithubIcon /> },
-  { name: 'Root-Me',    stat: 'Top 25 · 20 010 pts', color: '#ef4444', url: 'https://www.root-me.org/D0pp3lgang3r',              icon: <ShieldIcon /> },
+  { name: 'Root-Me',    stat: 'Top 25 · 20 010 pts', color: '#ef4444', url: 'https://www.root-me.org/D0pp3lgang3r',              icon: <img src="/images/rootmelogo.svg" alt="Root-Me" width={18} height={18} style={{ display: 'block' }} /> },
   { name: 'CryptoHack', stat: '#329 · 11 040 pts',   color: '#a78bfa', url: 'https://cryptohack.org/user/D0pp3lgang3r/',         icon: <LockIcon />   },
   { name: 'YesWeHack',  stat: 'Bug bounty hunter',   color: '#06b6d4', url: 'https://yeswehack.com/hunters/D0pp3lgang3r',        icon: <BugIcon />    },
 ];
@@ -88,7 +88,7 @@ export default function Home() {
                   <span style={{ color: '#06b6d4' }}>$</span>&nbsp;French Polytech student — hacking stuff for fun.
                 </p>
                 <p className="cursor" style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.74rem', color: '#475569', marginBottom: 28 }}>
-                  Cryptography · Network Security · CTF · Bug Bounty
+                  Malware Analysis · CTF · Bug Bounty
                 </p>
               </motion.div>
 
@@ -106,6 +106,7 @@ export default function Home() {
                       background: btn.primary ? '#7c3aed' : 'transparent',
                       color: btn.primary ? '#050508' : '#a78bfa',
                       border: '1px solid', borderColor: btn.primary ? '#7c3aed' : 'rgba(124,58,237,0.35)',
+                    borderRadius: 8,
                     }}>
                       {btn.label}
                     </Link>
@@ -201,7 +202,7 @@ export default function Home() {
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
           <div style={{ marginBottom: 48 }}>
             <p style={{ fontFamily: 'Orbitron, monospace', fontSize: '0.6rem', color: '#4c1d95', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 14 }}>
-              — Terminal interactif
+              — <span style={{ fontFamily: "'Noto Sans JP',sans-serif" }}>シェル</span> / SHELL
             </p>
             <InteractiveTerminal />
           </div>

@@ -59,7 +59,7 @@ function JpDecoder({ text, active }: { text: string; active: boolean }) {
 }
 
 const LINKS = [
-  { href: '/skills',   label: 'SKILLS'   },
+  { href: '/whoami',   label: 'WHOAMI'   },
   { href: '/articles', label: 'ARTICLES' },
   { href: '/writeups', label: 'WRITEUPS' },
   { href: '/contact',  label: 'CONTACT'  },
